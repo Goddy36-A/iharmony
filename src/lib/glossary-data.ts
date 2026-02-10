@@ -1,0 +1,150 @@
+export interface GlossaryTerm {
+  term: string;
+  description: string;
+  promptTip?: string;
+  level: 'beginner' | 'intermediate' | 'advanced';
+}
+
+export interface GlossaryCategory {
+  name: string;
+  icon: string;
+  terms: GlossaryTerm[];
+}
+
+export const GLOSSARY: GlossaryCategory[] = [
+  {
+    name: 'Song Structure',
+    icon: '🏗️',
+    terms: [
+      { term: 'Intro', description: 'The opening section that sets the mood and draws the listener in. Usually 4–8 bars with minimal instrumentation.', promptTip: 'Use "with a cinematic intro" or "atmospheric intro" in prompts.', level: 'beginner' },
+      { term: 'Verse', description: 'The storytelling section where lyrics change each time. Carries the narrative forward with a consistent melody.', promptTip: 'Specify "verse with storytelling lyrics" or "melodic verse".', level: 'beginner' },
+      { term: 'Chorus', description: 'The catchiest, most repeated part—the emotional peak. Contains the hook and main message of the song.', promptTip: 'Use "anthemic chorus", "catchy chorus hook", or "singalong chorus".', level: 'beginner' },
+      { term: 'Pre-Chorus', description: 'A transitional section that builds tension before the chorus drops. Creates anticipation.', promptTip: 'Try "with a building pre-chorus" or "rising pre-chorus".', level: 'beginner' },
+      { term: 'Bridge', description: 'A contrasting section that breaks the verse-chorus pattern. Introduces new melody or perspective, usually appears once.', promptTip: 'Use "with an emotional bridge" or "contrasting bridge section".', level: 'beginner' },
+      { term: 'Hook', description: 'The most memorable musical phrase or lyric that "hooks" the listener. Can be melodic, rhythmic, or lyrical.', promptTip: 'Specify "infectious hook", "vocal hook", or "instrumental hook".', level: 'beginner' },
+      { term: 'Outro', description: 'The closing section that winds the song down. Can fade out, end abruptly, or reprise earlier themes.', promptTip: 'Use "with a fade-out outro" or "dramatic ending".', level: 'beginner' },
+      { term: 'Drop', description: 'In EDM/electronic music, the moment after a build-up where the bass and beat hit hard. Maximum energy release.', promptTip: 'Use "heavy bass drop", "filthy drop", or "euphoric drop".', level: 'intermediate' },
+      { term: 'Breakdown', description: 'A stripped-back section where instruments drop out, creating contrast before the next build-up.', promptTip: 'Try "with a minimal breakdown" or "atmospheric breakdown".', level: 'intermediate' },
+      { term: 'Interlude', description: 'A short instrumental passage between sections that provides a breather or transition.', promptTip: 'Use "with a dreamy interlude" or "spoken word interlude".', level: 'intermediate' },
+      { term: 'Coda', description: 'A concluding passage that is technically different from the outro—adds a final musical statement.', promptTip: 'Use "with a coda ending" for a more formal, classical feel.', level: 'advanced' },
+      { term: 'Tag', description: 'A short repeated phrase at the end of a song, often repeating the hook or title.', promptTip: 'Use "with a repeated tag ending".', level: 'advanced' },
+    ],
+  },
+  {
+    name: 'Vocal Techniques',
+    icon: '🎤',
+    terms: [
+      { term: 'Adlibs', description: 'Spontaneous vocal additions like "yeah!", "uh!", "skrrt", "let\'s go!" that add energy and personality between main lyrics.', promptTip: 'Use "with energetic adlibs", "ad-libs like Travis Scott", or "hype adlibs".', level: 'beginner' },
+      { term: 'Autotune', description: 'Pitch correction effect that snaps vocals to the nearest note. Used subtly for polish or heavily for a robotic, melodic effect (T-Pain style).', promptTip: 'Use "heavy autotune", "T-Pain style autotune", or "subtle pitch correction".', level: 'beginner' },
+      { term: 'Harmonies', description: 'Multiple vocal lines sung at different pitches that complement the main melody. Creates richness and depth.', promptTip: 'Use "with lush vocal harmonies" or "stacked harmonies".', level: 'beginner' },
+      { term: 'Falsetto', description: 'A high, airy vocal register above the normal range. Used for emotional, ethereal moments.', promptTip: 'Use "falsetto vocals", "high falsetto hook", or "breathy falsetto".', level: 'intermediate' },
+      { term: 'Belting', description: 'Powerful, full-voice singing at high notes. Conveys intense emotion and requires strong vocal control.', promptTip: 'Use "belted vocals", "powerful belting chorus", or "soulful belt".', level: 'intermediate' },
+      { term: 'Vocal Chops', description: 'Short vocal samples sliced, pitched, and rearranged to create rhythmic or melodic patterns. Common in EDM and future bass.', promptTip: 'Use "with vocal chops", "chopped vocal samples", or "future bass vocal chops".', level: 'intermediate' },
+      { term: 'Whisper Vocals', description: 'Soft, breathy singing close to the mic that creates intimacy and ASMR-like quality.', promptTip: 'Use "whispered vocals", "intimate whisper delivery", or "ASMR vocals".', level: 'intermediate' },
+      { term: 'Vibrato', description: 'A slight, rapid variation in pitch that adds warmth and expressiveness to sustained notes.', promptTip: 'Use "with natural vibrato" or "operatic vibrato".', level: 'intermediate' },
+      { term: 'Melisma', description: 'Singing multiple notes on a single syllable—common in R&B, gospel, and pop. Think Beyoncé or Whitney Houston runs.', promptTip: 'Use "with vocal runs", "melismatic singing", or "R&B vocal runs".', level: 'advanced' },
+      { term: 'Vocal Fry', description: 'A low, creaky vocal register used for stylistic effect, often at the end of phrases. Common in indie and pop.', promptTip: 'Use "with vocal fry" or "raspy vocal fry tone".', level: 'advanced' },
+      { term: 'Talk-Singing (Sprechgesang)', description: 'A delivery between speaking and singing. Used in rap, spoken word, and some art-pop.', promptTip: 'Use "talk-singing style", "spoken word delivery", or "conversational vocals".', level: 'advanced' },
+    ],
+  },
+  {
+    name: 'Audio Effects & Processing',
+    icon: '🎛️',
+    terms: [
+      { term: 'Reverb', description: 'Simulates the natural echo of a space (room, hall, cathedral). Adds depth and atmosphere to any sound.', promptTip: 'Use "with hall reverb", "spacious reverb", or "cathedral reverb".', level: 'beginner' },
+      { term: 'Delay', description: 'Repeats the sound after a set time, creating echoes. Can be synced to tempo for rhythmic effects.', promptTip: 'Use "with delay effects", "ping-pong delay", or "tape delay".', level: 'beginner' },
+      { term: 'Distortion', description: 'Adds grit, aggression, and harmonic richness by clipping the audio signal. Essential in rock, metal, and lo-fi.', promptTip: 'Use "distorted", "crunchy distortion", "overdriven", or "lo-fi distorted".', level: 'beginner' },
+      { term: 'Compression', description: 'Reduces the dynamic range—makes quiet parts louder and loud parts quieter. Gives punch and consistency.', promptTip: 'Use "heavily compressed", "punchy compression", or "sidechain compression".', level: 'intermediate' },
+      { term: 'EQ (Equalization)', description: 'Boosts or cuts specific frequencies to shape the tone. Fundamental to mixing—makes instruments sit well together.', promptTip: 'Use "bright EQ", "warm low-end", or "crispy highs".', level: 'intermediate' },
+      { term: 'Chorus Effect', description: 'Duplicates the signal with slight pitch/time variations, creating a thicker, shimmering sound. Not the song section!', promptTip: 'Use "with chorus effect", "shimmering chorus modulation", or "80s chorus".', level: 'intermediate' },
+      { term: 'Flanger', description: 'Creates a sweeping, jet-like sound by mixing two identical signals with a varying delay.', promptTip: 'Use "with flanger effect" or "jet flanger sweep".', level: 'intermediate' },
+      { term: 'Phaser', description: 'Creates a swirling, spacey effect by splitting the signal and shifting the phase. Classic psychedelic sound.', promptTip: 'Use "with phaser", "psychedelic phaser", or "swirling phaser".', level: 'intermediate' },
+      { term: 'Sidechain', description: 'Ducks one sound when another plays (e.g., bass ducks when kick hits). Creates the "pumping" effect in EDM.', promptTip: 'Use "sidechain compression", "pumping sidechain", or "ducking bass".', level: 'advanced' },
+      { term: 'Saturation', description: 'Subtle, warm distortion that adds harmonics and presence. Makes sounds feel fuller and more analog.', promptTip: 'Use "warm saturation", "tape saturation", or "analog warmth".', level: 'advanced' },
+      { term: 'Bitcrusher', description: 'Reduces audio resolution for a lo-fi, retro, glitchy digital sound. Common in chiptune and experimental music.', promptTip: 'Use "bitcrushed", "lo-fi bitcrush", or "8-bit crushed".', level: 'advanced' },
+    ],
+  },
+  {
+    name: 'Rhythm & Tempo',
+    icon: '🥁',
+    terms: [
+      { term: 'BPM (Beats Per Minute)', description: 'The speed/tempo of a song. 60 BPM = 1 beat per second. 70-90 = chill, 100-130 = pop/dance, 140+ = high energy.', promptTip: 'Always specify BPM: "at 140 BPM", "slow tempo 70 BPM", "uptempo 128 BPM".', level: 'beginner' },
+      { term: 'Time Signature', description: 'How beats are grouped. 4/4 (most common—four beats per bar), 3/4 (waltz), 6/8 (compound feel).', promptTip: 'Use "in 4/4 time", "waltz in 3/4", or "6/8 feel".', level: 'beginner' },
+      { term: 'Groove', description: 'The rhythmic feel that makes you want to move. Created by subtle timing variations and accents.', promptTip: 'Use "groovy", "deep groove", "head-nodding groove", or "pocket groove".', level: 'beginner' },
+      { term: 'Swing', description: 'A rhythmic feel where notes are played unevenly (long-short) instead of straight. Gives a bouncy, jazzy feel.', promptTip: 'Use "with swing feel", "swung rhythm", or "jazzy swing".', level: 'intermediate' },
+      { term: 'Syncopation', description: 'Accenting off-beats or unexpected beats, creating rhythmic surprise and complexity.', promptTip: 'Use "syncopated rhythm", "offbeat accents", or "funky syncopation".', level: 'intermediate' },
+      { term: 'Polyrhythm', description: 'Two or more conflicting rhythms played simultaneously. Common in African music, jazz, and prog rock.', promptTip: 'Use "polyrhythmic", "Afrobeat polyrhythms", or "complex polyrhythm".', level: 'advanced' },
+      { term: 'Triplets', description: 'Three notes played in the space of two. Creates a rolling, bouncy feel. Dominant in trap and hip-hop hi-hats.', promptTip: 'Use "triplet hi-hats", "triplet flow", or "rolling triplets".', level: 'intermediate' },
+      { term: 'Half-Time', description: 'A feel where the snare hits on beat 3 instead of 2 and 4, making the tempo feel half as slow. Common in trap.', promptTip: 'Use "half-time feel", "half-time trap beat", or "slowed down half-time".', level: 'intermediate' },
+      { term: 'Double-Time', description: 'A feel where the rhythm doubles in speed while the harmony stays the same. Adds intensity.', promptTip: 'Use "double-time", "double-time rap flow", or "uptempo double-time".', level: 'intermediate' },
+    ],
+  },
+  {
+    name: 'Production & Arrangement',
+    icon: '🎹',
+    terms: [
+      { term: 'Mix', description: 'The process of balancing all tracks (vocals, instruments, drums) in volume, panning, and effects to sound cohesive.', promptTip: 'Use "clean mix", "professional mix", or "lo-fi mix".', level: 'beginner' },
+      { term: 'Master', description: 'Final polish applied to the entire mix—loudness, EQ, limiting. Makes the song ready for streaming platforms.', promptTip: 'Use "radio-ready master", "loud master", or "dynamic master".', level: 'beginner' },
+      { term: 'Layering', description: 'Stacking multiple sounds to create richness—e.g., layering synths, vocals, or drums for a fuller sound.', promptTip: 'Use "layered synths", "thick layered vocals", or "multi-layered production".', level: 'intermediate' },
+      { term: 'Sampling', description: 'Taking a portion of an existing recording and reusing it in a new context. Foundation of hip-hop and electronic music.', promptTip: 'Use "with sampled soul vocals", "chopped sample", or "sample-based beat".', level: 'beginner' },
+      { term: 'Loop', description: 'A repeating musical phrase or pattern. The backbone of electronic and hip-hop production.', promptTip: 'Use "looped melody", "4-bar loop", or "hypnotic loop".', level: 'beginner' },
+      { term: 'Arrangement', description: 'How sections (verse, chorus, bridge) are ordered and how instruments enter/exit throughout the song.', promptTip: 'Use "verse-chorus arrangement", "progressive arrangement", or "minimal arrangement".', level: 'intermediate' },
+      { term: 'Panning', description: 'Placing sounds in the stereo field (left, center, right). Creates width and space in a mix.', promptTip: 'Use "wide stereo", "panned guitars", or "immersive stereo width".', level: 'intermediate' },
+      { term: 'Automation', description: 'Programming changes over time—volume fades, filter sweeps, effect builds. Brings life and movement to static sounds.', promptTip: 'Use "with filter automation", "automated build-up", or "dynamic automation".', level: 'advanced' },
+      { term: 'Sound Design', description: 'Creating original sounds from scratch using synthesizers, samplers, and effects. The art of crafting unique timbres.', promptTip: 'Use "unique sound design", "experimental sound design", or "cinematic sound design".', level: 'advanced' },
+      { term: 'Foley', description: 'Real-world recorded sounds (footsteps, rain, glass) used to add texture and realism to productions.', promptTip: 'Use "with foley textures", "ambient foley sounds", or "organic foley".', level: 'advanced' },
+    ],
+  },
+  {
+    name: 'Melody & Harmony',
+    icon: '🎵',
+    terms: [
+      { term: 'Key', description: 'The tonal center of a song—determines which notes sound "right". E.g., C Major feels bright, A Minor feels sad.', promptTip: 'Specify key: "in C Major", "in A Minor", "in D♭ Major".', level: 'beginner' },
+      { term: 'Scale', description: 'A set of notes ordered by pitch that defines the tonal palette. Major = happy, Minor = sad, Blues = soulful.', promptTip: 'Use "using minor scale", "pentatonic melody", or "blues scale solo".', level: 'beginner' },
+      { term: 'Chord', description: 'Three or more notes played simultaneously. Major chords sound happy, minor chords sound sad.', promptTip: 'Use "simple chord progression", "jazzy chords", or "power chords".', level: 'beginner' },
+      { term: 'Chord Progression', description: 'A sequence of chords that forms the harmonic backbone. E.g., I-V-vi-IV is the most popular pop progression.', promptTip: 'Use "I-V-vi-IV progression", "jazz chord changes", or "blues progression".', level: 'beginner' },
+      { term: 'Melody', description: 'A sequence of single notes that forms the main tune—what you hum or whistle from a song.', promptTip: 'Use "catchy melody", "soaring melody", "dark melody", or "nostalgic melody".', level: 'beginner' },
+      { term: 'Countermelody', description: 'A secondary melody played against the main melody, adding depth and complexity.', promptTip: 'Use "with a countermelody" or "interweaving countermelody".', level: 'intermediate' },
+      { term: 'Modulation', description: 'Changing key within a song. Creates a lift or surprise—the classic "key change" in the final chorus.', promptTip: 'Use "with a key change", "modulating chorus", or "uplifting modulation".', level: 'advanced' },
+      { term: 'Arpeggio', description: 'A chord played one note at a time in sequence. Creates flowing, harp-like patterns. Very common in EDM and ambient.', promptTip: 'Use "arpeggiated synth", "arpeggio pattern", or "flowing arpeggios".', level: 'intermediate' },
+      { term: 'Interval', description: 'The distance between two notes. Small intervals = smooth/consonant, large intervals = dramatic/dissonant.', promptTip: 'Use "wide intervals for drama" or "close intervals for intimacy".', level: 'intermediate' },
+    ],
+  },
+  {
+    name: 'Lyrics & Songwriting',
+    icon: '✍️',
+    terms: [
+      { term: 'Lyrics', description: 'The words of a song. Can be narrative, abstract, emotional, or conversational depending on genre.', promptTip: 'Use "with introspective lyrics", "party lyrics", "conscious lyrics", or "abstract lyrics".', level: 'beginner' },
+      { term: 'Flow', description: 'In rap/hip-hop, the rhythmic pattern and cadence of vocal delivery. How words ride the beat.', promptTip: 'Use "smooth flow", "rapid-fire flow", "triplet flow", or "laid-back flow".', level: 'beginner' },
+      { term: 'Bars', description: 'In rap, a "bar" is one measure of music (usually 4 beats). "16 bars" = a standard verse length.', promptTip: 'Use "16-bar verse", "8-bar hook", or "spit bars".', level: 'beginner' },
+      { term: 'Rhyme Scheme', description: 'The pattern of rhymes at the end of lines. AABB = couplets, ABAB = alternating, ABCABC = complex.', promptTip: 'Use "AABB rhyme scheme", "multi-syllabic rhymes", or "internal rhymes".', level: 'intermediate' },
+      { term: 'Metaphor', description: 'Describing one thing as another for poetic effect. "Life is a highway." Adds depth and imagery to lyrics.', promptTip: 'Use "with metaphorical lyrics" or "poetic metaphors".', level: 'intermediate' },
+      { term: 'Storytelling', description: 'Narrative songwriting that tells a story with characters, plot, and resolution.', promptTip: 'Use "narrative storytelling", "story-driven lyrics", or "cinematic storytelling".', level: 'intermediate' },
+      { term: 'Cadence', description: 'The rhythmic pattern and emphasis in vocal delivery. Different cadences give completely different vibes.', promptTip: 'Use "bouncy cadence", "aggressive cadence", or "melodic cadence".', level: 'intermediate' },
+      { term: 'Punch Line', description: 'A clever, impactful lyric designed to surprise or impress. Key element in battle rap and wordplay.', promptTip: 'Use "with hard-hitting punchlines" or "clever wordplay".', level: 'advanced' },
+      { term: 'Double Entendre', description: 'A phrase with two meanings—one obvious, one hidden. Shows lyrical skill and adds replay value.', promptTip: 'Use "with double entendres" or "layered wordplay".', level: 'advanced' },
+    ],
+  },
+  {
+    name: 'AI Music Prompting',
+    icon: '🤖',
+    terms: [
+      { term: 'Genre Tag', description: 'Specifying the musical genre sets the overall style, instrumentation, and production approach.', promptTip: 'Start prompts with genre: "trap beat", "indie pop", "lo-fi hip-hop", "dark techno".', level: 'beginner' },
+      { term: 'Mood/Vibe', description: 'Emotional descriptors that guide the AI toward a specific feeling or atmosphere.', promptTip: 'Use "melancholic", "euphoric", "aggressive", "dreamy", "nostalgic", "dark".', level: 'beginner' },
+      { term: 'Instrumentation', description: 'Specifying instruments tells the AI what sounds to feature prominently.', promptTip: 'Use "acoustic guitar", "808 bass", "analog synth", "orchestral strings", "lo-fi piano".', level: 'beginner' },
+      { term: 'Reference Artist', description: 'Naming an artist helps the AI understand the specific style and production quality you want.', promptTip: 'Use "in the style of", "inspired by", or "[Artist] type beat".', level: 'beginner' },
+      { term: 'Production Quality', description: 'Describing the production aesthetic—polished vs raw, modern vs vintage, clean vs gritty.', promptTip: 'Use "radio-ready", "lo-fi", "raw and unpolished", "vintage analog", "crystal clear".', level: 'intermediate' },
+      { term: 'Era/Decade', description: 'Specifying a time period evokes the production techniques, sounds, and style of that era.', promptTip: 'Use "90s boom-bap", "80s synthwave", "70s funk", "2020s hyperpop".', level: 'intermediate' },
+      { term: 'Energy Level', description: 'Describing intensity helps shape dynamics—from ambient and gentle to explosive and chaotic.', promptTip: 'Use "high energy", "chill and relaxed", "building intensity", "explosive drop".', level: 'intermediate' },
+      { term: 'Negative Prompting', description: 'Specifying what you DON\'T want can be as helpful as saying what you do want.', promptTip: 'Use "no drums", "without vocals", "avoid autotune", "no electronic elements".', level: 'advanced' },
+      { term: 'Prompt Stacking', description: 'Combining multiple descriptors for precision: genre + mood + instrumentation + era + quality.', promptTip: 'Example: "dark trap beat, 140 BPM, heavy 808s, eerie synths, Travis Scott style, with reverb-drenched vocals".', level: 'advanced' },
+      { term: 'Section Prompting', description: 'Describing specific song sections separately for more control over arrangement.', promptTip: 'Example: "verse: mellow with soft piano, chorus: explosive with full band, bridge: stripped acoustic".', level: 'advanced' },
+    ],
+  },
+];
+
+export const LEVEL_COLORS: Record<string, string> = {
+  beginner: 'bg-green-500/15 text-green-400 border-green-500/20',
+  intermediate: 'bg-yellow-500/15 text-yellow-400 border-yellow-500/20',
+  advanced: 'bg-red-500/15 text-red-400 border-red-500/20',
+};
