@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Music, Piano, Layers, BookOpen, Headphones } from 'lucide-react';
+import { Music, Piano, Layers, BookOpen, Headphones, GraduationCap } from 'lucide-react';
 import ScaleExplorer from '@/components/ScaleExplorer';
 import ChordProgressions from '@/components/ChordProgressions';
 import SongStructures from '@/components/SongStructures';
 import GenreGuide from '@/components/GenreGuide';
+import ProductionGlossary from '@/components/ProductionGlossary';
 
 const tabs = [
+  { id: 'glossary', label: 'Glossary', icon: GraduationCap, description: 'Zero to hero guide' },
   { id: 'scales', label: 'Scales', icon: Piano, description: 'Explore scales & modes' },
   { id: 'chords', label: 'Chords', icon: Headphones, description: 'Chord progressions' },
   { id: 'structure', label: 'Structure', icon: Layers, description: 'Song arrangements' },
@@ -13,7 +15,7 @@ const tabs = [
 ];
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('scales');
+  const [activeTab, setActiveTab] = useState('glossary');
 
   return (
     <div className="min-h-screen bg-background">
@@ -53,6 +55,7 @@ const Index = () => {
         </nav>
 
         {/* Tab content */}
+        {activeTab === 'glossary' && <ProductionGlossary />}
         {activeTab === 'scales' && <ScaleExplorer />}
         {activeTab === 'chords' && <ChordProgressions />}
         {activeTab === 'structure' && <SongStructures />}
