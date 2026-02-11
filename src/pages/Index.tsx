@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Music, Piano, Layers, BookOpen, Headphones, GraduationCap } from 'lucide-react';
+import { Music, Piano, Layers, BookOpen, Headphones, GraduationCap, Globe } from 'lucide-react';
 import ScaleExplorer from '@/components/ScaleExplorer';
 import ChordProgressions from '@/components/ChordProgressions';
 import SongStructures from '@/components/SongStructures';
@@ -7,11 +7,11 @@ import GenreGuide from '@/components/GenreGuide';
 import ProductionGlossary from '@/components/ProductionGlossary';
 
 const tabs = [
-  { id: 'glossary', label: 'Glossary', icon: GraduationCap, description: 'Zero to hero guide' },
-  { id: 'scales', label: 'Scales', icon: Piano, description: 'Explore scales & modes' },
+  { id: 'glossary', label: 'Dictionary', icon: GraduationCap, description: 'Producer dictionary & prompt tips' },
+  { id: 'genres', label: 'Genres', icon: Globe, description: 'Genre knowledge base + samples' },
+  { id: 'scales', label: 'Scales', icon: Piano, description: 'Music theory reference' },
   { id: 'chords', label: 'Chords', icon: Headphones, description: 'Chord progressions' },
   { id: 'structure', label: 'Structure', icon: Layers, description: 'Song arrangements' },
-  { id: 'genres', label: 'Genres', icon: BookOpen, description: 'Genre guide' },
 ];
 
 const Index = () => {
@@ -27,7 +27,7 @@ const Index = () => {
           </div>
           <div>
             <h1 className="text-xl font-bold text-foreground text-glow">SoundTheory</h1>
-            <p className="text-xs text-muted-foreground font-mono">Interactive Music Theory Lab</p>
+            <p className="text-xs text-muted-foreground font-mono">AI Producer Curriculum — Zero to Hero</p>
           </div>
         </div>
       </header>
