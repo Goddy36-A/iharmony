@@ -7,16 +7,35 @@ const GenreGuide = () => {
   const [playingUrl, setPlayingUrl] = useState<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  const [audioError, setAudioError] = useState<string | null>(null);
+
   const togglePlay = (url: string) => {
+    setAudioError(null);
     if (playingUrl === url) {
       audioRef.current?.pause();
       setPlayingUrl(null);
     } else {
-      if (audioRef.current) audioRef.current.pause();
-      const audio = new Audio(url);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = '';
+      }
+      const audio = new Audio();
+      audio.crossOrigin = 'anonymous';
       audio.volume = 0.5;
       audio.onended = () => setPlayingUrl(null);
-      audio.play();
+      audio.onerror = () => {
+        setPlayingUrl(null);
+        setAudioError(`Could not load sample. Try another or check your connection.`);
+        setTimeout(() => setAudioError(null), 4000);
+      };
+      audio.oncanplaythrough = () => {
+        audio.play().catch(() => {
+          setPlayingUrl(null);
+          setAudioError('Playback blocked. Click again to retry.');
+          setTimeout(() => setAudioError(null), 4000);
+        });
+      };
+      audio.src = url;
       audioRef.current = audio;
       setPlayingUrl(url);
     }
@@ -159,6 +178,12 @@ const GenreGuide = () => {
           </div>
         ))}
       </div>
+
+      {audioError && (
+        <div className="fixed bottom-4 right-4 z-50 bg-destructive/90 text-destructive-foreground px-4 py-2 rounded-lg text-sm shadow-lg animate-slide-up">
+          ⚠️ {audioError}
+        </div>
+      )}
 
       {filteredGenres.length === 0 && (
         <div className="text-center py-12 text-muted-foreground">

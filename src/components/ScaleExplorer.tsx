@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { ALL_NOTES, SCALES, getScaleNotes, getScaleNoteNames, playSequence } from '@/lib/music-data';
 import PianoKeyboard from './PianoKeyboard';
-import { Play } from 'lucide-react';
+import { Play, Sparkles } from 'lucide-react';
 
 const ScaleExplorer = () => {
   const [selectedRoot, setSelectedRoot] = useState('C');
@@ -65,26 +65,53 @@ const ScaleExplorer = () => {
       </div>
 
       {/* Scale info */}
-      <div className="glass rounded-xl p-4 flex items-center justify-between">
-        <div>
-          <h3 className="text-lg font-semibold">{selectedRoot} {selectedScale}</h3>
-          <p className="text-muted-foreground text-sm">{scaleInfo?.description}</p>
-          <p className="font-mono text-primary text-sm mt-1">
-            {scaleNoteNames.join(' — ')}
-          </p>
+      <div className="glass rounded-xl p-5 space-y-4">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-foreground">{selectedRoot} {selectedScale}</h3>
+            <p className="font-mono text-primary text-sm mt-1">
+              {scaleNoteNames.join(' — ')}
+            </p>
+          </div>
+          <button
+            onClick={handlePlayScale}
+            disabled={isPlaying}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-all shrink-0 ${
+              isPlaying
+                ? 'bg-primary/30 text-primary cursor-wait'
+                : 'bg-primary text-primary-foreground hover:glow-primary'
+            }`}
+          >
+            <Play className="w-4 h-4" />
+            {isPlaying ? 'Playing...' : 'Play Scale'}
+          </button>
         </div>
-        <button
-          onClick={handlePlayScale}
-          disabled={isPlaying}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-all ${
-            isPlaying
-              ? 'bg-primary/30 text-primary cursor-wait'
-              : 'bg-primary text-primary-foreground hover:glow-primary'
-          }`}
-        >
-          <Play className="w-4 h-4" />
-          {isPlaying ? 'Playing...' : 'Play Scale'}
-        </button>
+
+        <p className="text-sm text-muted-foreground leading-relaxed">{scaleInfo?.description}</p>
+
+        {scaleInfo && 'mood' in scaleInfo && (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+            <div className="p-3 rounded-lg bg-secondary/50 border border-border/50">
+              <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider block mb-1">🎭 Mood</span>
+              <p className="text-foreground text-xs">{(scaleInfo as any).mood}</p>
+            </div>
+            <div className="p-3 rounded-lg bg-secondary/50 border border-border/50">
+              <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider block mb-1">🎵 Used In</span>
+              <p className="text-foreground text-xs">{(scaleInfo as any).usedIn}</p>
+            </div>
+            <div className="p-3 rounded-lg bg-secondary/50 border border-border/50">
+              <span className="text-[10px] text-muted-foreground font-mono uppercase tracking-wider block mb-1">👂 How to Hear It</span>
+              <p className="text-foreground text-xs">{(scaleInfo as any).howToHear}</p>
+            </div>
+          </div>
+        )}
+
+        {scaleInfo && 'promptTip' in scaleInfo && (
+          <div className="flex items-start gap-2 p-3 rounded-lg bg-primary/5 border border-primary/10">
+            <Sparkles className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+            <p className="text-xs text-primary/90 font-mono">{(scaleInfo as any).promptTip}</p>
+          </div>
+        )}
       </div>
 
       {/* Piano */}

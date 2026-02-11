@@ -141,6 +141,31 @@ export const GLOSSARY: GlossaryCategory[] = [
       { term: 'Section Prompting', description: 'Describing specific song sections separately for more control over arrangement.', promptTip: 'Example: "verse: mellow with soft piano, chorus: explosive with full band, bridge: stripped acoustic".', level: 'advanced' },
     ],
   },
+  {
+    name: 'Texture & Timbre',
+    icon: '🔊',
+    terms: [
+      { term: 'Timbre', description: 'The unique "color" or quality of a sound that distinguishes a piano from a guitar playing the same note. It\'s WHY a trumpet sounds different from a violin even at the same pitch.', promptTip: 'Use "warm timbre", "bright timbre", "dark timbre", or "metallic timbre".', level: 'beginner' },
+      { term: 'Texture', description: 'How many layers of sound are happening at once and how they interact. Thin texture = solo instrument. Thick texture = full orchestra.', promptTip: 'Use "thick layered texture", "sparse texture", "dense wall of sound".', level: 'beginner' },
+      { term: 'Pad', description: 'A sustained, evolving sound used to fill space and create atmosphere. Think of the warm, floating sounds in ambient and chill music.', promptTip: 'Use "lush pad", "atmospheric synth pad", "warm analog pad", or "ethereal pad".', level: 'intermediate' },
+      { term: 'Stab', description: 'A short, punchy burst of sound—usually a chord hit. Common in house music, disco, and funk. Think of those sharp brass or synth hits.', promptTip: 'Use "synth stabs", "brass stabs", "disco stabs", or "chord stabs".', level: 'intermediate' },
+      { term: 'Drone', description: 'A continuous, sustained note or chord that creates a hypnotic base. Used in ambient, meditation music, Indian classical (tanpura), and post-rock.', promptTip: 'Use "with drone bass", "ambient drone", or "tanpura drone".', level: 'intermediate' },
+      { term: 'Glitch', description: 'Intentional digital errors—skips, stutters, bit-reduction—used as rhythmic or textural elements. What was once a mistake is now an art form.', promptTip: 'Use "glitchy production", "digital glitch effects", or "stuttered glitch".', level: 'advanced' },
+      { term: 'Granular', description: 'Breaking sound into tiny "grains" and reassembling them. Creates otherworldly, evolving textures from any source material.', promptTip: 'Use "granular synthesis", "granular textures", or "granular ambient".', level: 'advanced' },
+    ],
+  },
+  {
+    name: 'Dynamics & Expression',
+    icon: '📈',
+    terms: [
+      { term: 'Crescendo', description: 'Gradually getting louder. The musical equivalent of someone slowly turning up the volume. Creates excitement and anticipation.', promptTip: 'Use "with a crescendo build", "gradually building intensity", or "crescendo to climax".', level: 'beginner' },
+      { term: 'Decrescendo', description: 'Gradually getting softer. Like fading into a whisper. Creates intimacy or signals an ending.', promptTip: 'Use "with a decrescendo ending", "fading to silence", or "dying away softly".', level: 'beginner' },
+      { term: 'Staccato', description: 'Short, detached notes with silence between them. Think of a chicken pecking or raindrops. Creates energy and precision.', promptTip: 'Use "staccato strings", "staccato rhythm", or "short punchy notes".', level: 'intermediate' },
+      { term: 'Legato', description: 'Smooth, connected notes that flow into each other. The opposite of staccato. Think of a singer holding one long, fluid phrase.', promptTip: 'Use "legato melody", "smooth flowing legato", or "connected legato lines".', level: 'intermediate' },
+      { term: 'Accent', description: 'Emphasizing a particular note or beat harder than others. Changes the groove entirely—move the accent and the feel transforms.', promptTip: 'Use "accented beats", "heavy accent on the one", or "offbeat accents".', level: 'intermediate' },
+      { term: 'Swell', description: 'A note or chord that starts quiet and blooms louder, often with added effects. Creates a "breathing" or "rising" sensation.', promptTip: 'Use "synth swell", "volume swell", or "swelling pads".', level: 'intermediate' },
+    ],
+  },
 ];
 
 export const LEVEL_COLORS: Record<string, string> = {

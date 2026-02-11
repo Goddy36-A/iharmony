@@ -61,20 +61,120 @@ export const playSequence = async (notes: string[], tempo = 200) => {
 };
 
 // Scale definitions: intervals from root in semitones
-export const SCALES: Record<string, { intervals: number[]; description: string }> = {
-  'Major': { intervals: [0, 2, 4, 5, 7, 9, 11], description: 'Happy, bright, resolved' },
-  'Natural Minor': { intervals: [0, 2, 3, 5, 7, 8, 10], description: 'Sad, dark, emotional' },
-  'Harmonic Minor': { intervals: [0, 2, 3, 5, 7, 8, 11], description: 'Exotic, dramatic tension' },
-  'Melodic Minor': { intervals: [0, 2, 3, 5, 7, 9, 11], description: 'Jazz, sophisticated' },
-  'Dorian': { intervals: [0, 2, 3, 5, 7, 9, 10], description: 'Jazzy minor, funky' },
-  'Mixolydian': { intervals: [0, 2, 4, 5, 7, 9, 10], description: 'Bluesy major, rock' },
-  'Phrygian': { intervals: [0, 1, 3, 5, 7, 8, 10], description: 'Spanish, dark, flamenco' },
-  'Lydian': { intervals: [0, 2, 4, 6, 7, 9, 11], description: 'Dreamy, ethereal, floating' },
-  'Pentatonic Major': { intervals: [0, 2, 4, 7, 9], description: 'Universal, simple, folk' },
-  'Pentatonic Minor': { intervals: [0, 3, 5, 7, 10], description: 'Blues, rock solos' },
-  'Blues': { intervals: [0, 3, 5, 6, 7, 10], description: 'Soulful, gritty, expressive' },
-  'Whole Tone': { intervals: [0, 2, 4, 6, 8, 10], description: 'Dreamy, impressionist' },
-  'Chromatic': { intervals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], description: 'All 12 notes' },
+export interface ScaleInfo {
+  intervals: number[];
+  description: string;
+  mood: string;
+  usedIn: string;
+  howToHear: string;
+  promptTip: string;
+}
+
+export const SCALES: Record<string, ScaleInfo> = {
+  'Major': {
+    intervals: [0, 2, 4, 5, 7, 9, 11],
+    description: 'The "happy" scale. Think "Happy Birthday" or "Twinkle Twinkle Little Star." It sounds resolved, bright, and complete. Every pop song you\'ve ever hummed likely uses this scale.',
+    mood: 'Happy, bright, uplifting, triumphant',
+    usedIn: 'Pop, Country, Gospel, Children\'s music, Anthems',
+    howToHear: 'Play all the white keys from C to C on a piano. That confident, "everything is fine" feeling? That\'s Major.',
+    promptTip: 'Use "in major key" or "bright major melody" for uplifting tracks.',
+  },
+  'Natural Minor': {
+    intervals: [0, 2, 3, 5, 7, 8, 10],
+    description: 'The "sad" scale. If Major is sunshine, Minor is moonlight. It creates a darker, more emotional atmosphere. Most R&B, trap, and dramatic film scores live here.',
+    mood: 'Sad, dark, emotional, introspective, mysterious',
+    usedIn: 'R&B, Trap, Rock ballads, Film scores, Gothic music',
+    howToHear: 'Play all white keys from A to A. That melancholic, bittersweet pull you feel? That\'s Natural Minor. Compare it to Major and you\'ll instantly hear the difference.',
+    promptTip: 'Use "minor key", "dark minor melody", or "melancholic minor" in prompts.',
+  },
+  'Harmonic Minor': {
+    intervals: [0, 2, 3, 5, 7, 8, 11],
+    description: 'Natural Minor\'s dramatic cousin. By raising the 7th note one half-step, you get an exotic, almost Middle Eastern tension. That raised 7th creates an urgent pull back to the root note.',
+    mood: 'Exotic, dramatic, tense, Middle Eastern, cinematic',
+    usedIn: 'Metal, Flamenco, Middle Eastern music, Film villain themes, Neoclassical',
+    howToHear: 'Play Natural Minor but raise the second-to-last note by one key. Hear that sudden tension? That "snake charmer" vibe? That\'s the raised 7th at work.',
+    promptTip: 'Use "harmonic minor", "exotic scale", or "dramatic tension" for intense moments.',
+  },
+  'Melodic Minor': {
+    intervals: [0, 2, 3, 5, 7, 9, 11],
+    description: 'A sophisticated hybrid—minor at the bottom, major at the top. Jazz musicians live in this scale. It removes the awkward gap in Harmonic Minor for smoother melody writing.',
+    mood: 'Sophisticated, jazzy, smooth, bittersweet',
+    usedIn: 'Jazz, Neo-soul, Film scores, Fusion, Advanced pop',
+    howToHear: 'It starts sad (minor 3rd) but ends bright (major 6th and 7th). This push-pull between sadness and hope is what makes it sound so emotionally complex.',
+    promptTip: 'Use "melodic minor", "jazz scale", or "sophisticated harmony" for jazz-influenced tracks.',
+  },
+  'Dorian': {
+    intervals: [0, 2, 3, 5, 7, 9, 10],
+    description: 'The "cool minor" scale. It\'s like Natural Minor but with a brighter 6th note that gives it a groovy, less gloomy quality. The secret sauce behind funk and soul.',
+    mood: 'Groovy, cool, funky, soulful, sophisticated',
+    usedIn: 'Funk, Soul, Jazz, Lo-fi Hip-Hop, Santana, Daft Punk',
+    howToHear: 'Play all white keys D to D. It\'s minor, but notice it doesn\'t feel as "sad"—more like a cool, confident strut. That slightly raised 6th gives it swagger.',
+    promptTip: 'Use "dorian mode", "funky dorian groove", or "soulful dorian" for that smooth funk feel.',
+  },
+  'Mixolydian': {
+    intervals: [0, 2, 4, 5, 7, 9, 10],
+    description: 'A major scale with a blues twist. The lowered 7th gives it a rocking, bluesy, unresolved edge. Think classic rock riffs, blues jams, and gospel shouts.',
+    mood: 'Bluesy, rocking, confident, earthy, raw',
+    usedIn: 'Blues-rock, Classic rock, Country, Gospel, Grateful Dead, AC/DC',
+    howToHear: 'Play all white keys G to G. Sounds like Major, but the ending feels like it wants to keep going rather than stop. That\'s the lowered 7th refusing to resolve.',
+    promptTip: 'Use "mixolydian", "bluesy major", or "rock mode" for that classic rock/blues vibe.',
+  },
+  'Phrygian': {
+    intervals: [0, 1, 3, 5, 7, 8, 10],
+    description: 'The most exotic-sounding mode. That half-step between the 1st and 2nd note creates instant drama. It\'s flamenco guitars, metal breakdowns, and Middle Eastern mystique.',
+    mood: 'Dark, exotic, Spanish, aggressive, mystical',
+    usedIn: 'Flamenco, Metal, Trap, Drill, Middle Eastern music, Film scores',
+    howToHear: 'Play all white keys E to E. That very first step (E to F) is tiny—just one key apart—and it immediately sounds "foreign" and tense. That\'s Phrygian\'s signature.',
+    promptTip: 'Use "phrygian mode", "dark phrygian", or "Spanish phrygian" for dark, exotic vibes.',
+  },
+  'Lydian': {
+    intervals: [0, 2, 4, 6, 7, 9, 11],
+    description: 'The "dreamer" scale. By raising the 4th note of Major, everything floats and shimmers. It\'s the sound of wonder, magic, and sci-fi soundtracks (think The Simpsons theme).',
+    mood: 'Dreamy, ethereal, magical, floating, wonderous',
+    usedIn: 'Film scores (Spielberg/Williams), Dream pop, Ambient, Prog rock, The Simpsons',
+    howToHear: 'Play all white keys F to F. That raised 4th (B natural instead of Bb) makes everything feel weightless, like you\'re floating above the clouds.',
+    promptTip: 'Use "lydian mode", "dreamy lydian", or "ethereal floating" for magical, airy textures.',
+  },
+  'Pentatonic Major': {
+    intervals: [0, 2, 4, 7, 9],
+    description: 'The universal scale—found in music from every culture on Earth, from Chinese folk to African tribal songs to Bobby McFerrin. Only 5 notes, and they ALL sound good together. Impossible to play a wrong note.',
+    mood: 'Universal, warm, simple, folk, accessible',
+    usedIn: 'Folk worldwide, Pop melodies, Country, Children\'s songs, African music, Chinese music',
+    howToHear: 'Play only the black keys on a piano. Seriously—just hit random black keys and it sounds musical. That\'s Pentatonic Major. It\'s the ultimate "safe" scale.',
+    promptTip: 'Use "pentatonic melody", "simple folk melody", or "universal pentatonic" for accessible tunes.',
+  },
+  'Pentatonic Minor': {
+    intervals: [0, 3, 5, 7, 10],
+    description: 'The rock and blues soloist\'s best friend. Only 5 notes, but they carry ALL the emotion. Every guitar solo you\'ve ever air-guitared probably uses this scale. It\'s raw, soulful, and powerful.',
+    mood: 'Bluesy, raw, soulful, powerful, gritty',
+    usedIn: 'Blues, Rock solos, R&B, Hip-Hop melodies, West African music',
+    howToHear: 'Think of the opening riff of "Smoke on the Water" or any classic guitar solo. Those big, expressive bends? Almost always Pentatonic Minor.',
+    promptTip: 'Use "pentatonic minor solo", "bluesy pentatonic", or "rock guitar solo" for soulful leads.',
+  },
+  'Blues': {
+    intervals: [0, 3, 5, 6, 7, 10],
+    description: 'Pentatonic Minor with one extra "blue note" (the flat 5th/sharp 4th). That one added note is the entire difference between "nice solo" and "soul-crushing solo." It\'s the sound of pain, grit, and raw human emotion.',
+    mood: 'Soulful, gritty, expressive, painful, raw, authentic',
+    usedIn: 'Blues, Jazz, Rock, Gospel, R&B, Soul',
+    howToHear: 'Take Pentatonic Minor and add one note right in the middle—that "wrong" note that bends and cries. B.B. King\'s guitar weeping? That\'s the blue note.',
+    promptTip: 'Use "blues scale", "soulful blues", or "gritty blues licks" for authentic blues feel.',
+  },
+  'Whole Tone': {
+    intervals: [0, 2, 4, 6, 8, 10],
+    description: 'Every note is the same distance apart (whole steps only). This creates a floating, disorienting, dreamlike quality. No sense of "home" or resolution. Pure ambiguity.',
+    mood: 'Dreamy, disorienting, impressionist, surreal, floating',
+    usedIn: 'Debussy, Film dream sequences, Transition effects, Wayne Shorter jazz',
+    howToHear: 'Play C-D-E-F#-G#-A#. Nothing feels like "home." It\'s like being in a dream where nothing quite makes sense. Debussy used it to paint impressionist sound-pictures.',
+    promptTip: 'Use "whole tone scale", "dreamy impressionist", or "surreal floating" for dream-like passages.',
+  },
+  'Chromatic': {
+    intervals: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+    description: 'ALL 12 notes. Not really a "scale" you write melodies in, but essential for understanding tension, passing tones, and chromatic runs. Jazz players use chromatic notes to add spice between scale tones.',
+    mood: 'Tense, dramatic, chaotic, intense, building',
+    usedIn: 'Jazz improvisation, Horror film scores, Chromatic runs, Transition passages',
+    howToHear: 'Play every single key (black and white) going up. That rapid, building tension? That\'s chromatic movement. It\'s the sound of "something is about to happen."',
+    promptTip: 'Use "chromatic run", "chromatic tension", or "all 12 tones" for dramatic effect.',
+  },
 };
 
 export const getScaleNotes = (root: string, scaleName: string, octave = 4): string[] => {
@@ -106,14 +206,17 @@ export interface ChordProgression {
 }
 
 export const CHORD_PROGRESSIONS: ChordProgression[] = [
-  { name: 'Pop Classic', numerals: ['I', 'V', 'vi', 'IV'], description: 'The most popular progression in modern pop', genre: 'Pop' },
-  { name: '12-Bar Blues', numerals: ['I', 'I', 'I', 'I', 'IV', 'IV', 'I', 'I', 'V', 'IV', 'I', 'V'], description: 'Foundation of blues and early rock', genre: 'Blues' },
-  { name: 'Jazz ii-V-I', numerals: ['ii', 'V', 'I'], description: 'The most important jazz progression', genre: 'Jazz' },
-  { name: 'Sad Progression', numerals: ['vi', 'IV', 'I', 'V'], description: 'Emotional, melancholic feel', genre: 'Pop/Rock' },
-  { name: 'Andalusian Cadence', numerals: ['i', 'VII', 'VI', 'V'], description: 'Spanish/flamenco flavor', genre: 'World' },
-  { name: 'Doo-Wop', numerals: ['I', 'vi', 'IV', 'V'], description: '50s rock and roll classic', genre: 'Rock' },
-  { name: 'Canon', numerals: ['I', 'V', 'vi', 'iii', 'IV', 'I', 'IV', 'V'], description: 'Pachelbel\'s famous progression', genre: 'Classical' },
-  { name: 'Trap/Hip-Hop', numerals: ['i', 'VI', 'III', 'VII'], description: 'Dark, modern trap feel', genre: 'Hip-Hop' },
+  { name: 'Pop Classic (I-V-vi-IV)', numerals: ['I', 'V', 'vi', 'IV'], description: 'Used in literally hundreds of hit songs—"Let It Be," "No Woman No Cry," "Someone Like You." It works because the vi (minor) chord creates a brief emotional dip before the IV chord lifts you back up. If you only learn ONE progression, learn this one.', genre: 'Pop' },
+  { name: '12-Bar Blues', numerals: ['I', 'I', 'I', 'I', 'IV', 'IV', 'I', 'I', 'V', 'IV', 'I', 'V'], description: 'The DNA of Western popular music. Blues, rock, jazz—they all started here. The movement from I to IV feels like "leaving home," and V creates tension that pulls you back. Every musician should feel this in their bones.', genre: 'Blues' },
+  { name: 'Jazz ii-V-I', numerals: ['ii', 'V', 'I'], description: 'The most important progression in jazz. The ii chord sets up tension, V intensifies it, and I resolves it—like asking a question and getting a satisfying answer. Add 7th chords for authentic jazz color.', genre: 'Jazz' },
+  { name: 'Sad Progression (vi-IV-I-V)', numerals: ['vi', 'IV', 'I', 'V'], description: 'Starting on the minor chord makes everything feel melancholic from the first note. Used in "Africa" by Toto, "Zombie" by Cranberries. It\'s the Pop Classic reordered to start sad instead of bright.', genre: 'Pop/Rock' },
+  { name: 'Andalusian Cadence', numerals: ['i', 'VII', 'VI', 'V'], description: 'The sound of Spain—flamenco guitars, dramatic tension, descending passion. The bass line walks down step by step, creating a hypnotic pull. Also used in "Hit the Road Jack" and Amapiano bass patterns.', genre: 'World' },
+  { name: 'Doo-Wop (I-vi-IV-V)', numerals: ['I', 'vi', 'IV', 'V'], description: 'The 1950s in four chords. "Stand By Me," "Earth Angel," every doo-wop song ever. The vi chord adds sweetness, IV adds warmth, and V sets up the loop. Simple, timeless, and endlessly satisfying.', genre: 'Rock' },
+  { name: 'Canon (Pachelbel)', numerals: ['I', 'V', 'vi', 'iii', 'IV', 'I', 'IV', 'V'], description: 'Pachelbel wrote this in the 1600s and it\'s STILL being used—"Graduation" by Vitamin C, "Basket Case" by Green Day, countless wedding songs. The longer length gives it an epic, narrative quality.', genre: 'Classical' },
+  { name: 'Trap / Hip-Hop', numerals: ['i', 'VI', 'III', 'VII'], description: 'Dark, moody, modern. All minor-rooted with big jumps between chords. The VI and VII create that ominous, spacious feel you hear in Travis Scott, Future, and Metro Boomin productions.', genre: 'Hip-Hop' },
+  { name: 'Afrobeats / Amapiano', numerals: ['I', 'IV', 'vi', 'V'], description: 'Warm, danceable, uplifting. The movement between I and IV creates a sunny, swaying feel. Add jazzy 7ths for Amapiano flavor. This progression drives Burna Boy, Wizkid, and Kabza De Small.', genre: 'Afrobeats' },
+  { name: 'Gospel Turnaround', numerals: ['I', 'IV', 'I', 'V'], description: 'The church progression. Simple but POWERFUL with the right voicings. Add 7th, 9th, and 11th extensions and it becomes the rich, emotional foundation of gospel, soul, and R&B.', genre: 'Gospel' },
+  { name: 'Reggae One-Drop', numerals: ['I', 'IV', 'V', 'I'], description: 'Bob Marley\'s bread and butter. The simplicity is the point—it lets the offbeat guitar skank and bass line groove shine. The I-IV-V-I is the oldest trick in music, and reggae proves it still works.', genre: 'Reggae' },
 ];
 
 // Build chords from scale degree
@@ -556,5 +659,138 @@ export const GENRES: GenreInfo[] = [
       { label: '🎵 Latin Rhythm', url: 'https://cdn.pixabay.com/audio/2023/04/04/audio_5bfb8b2a77.mp3' },
     ],
     subgenres: ['Salsa', 'Bachata', 'Merengue', 'Cumbia', 'Son Cubano'],
+  },
+  // ===== GLOBAL & RURAL GENRES =====
+  {
+    name: 'Brazilian Funk (Funk Carioca)', bpm: '130-150', timeSignature: '4/4',
+    commonScales: ['Natural Minor', 'Phrygian', 'Pentatonic Minor'],
+    characteristics: ['Batida beat pattern', 'Heavy bass', 'Call and response', 'Tamborzão drum machine', 'MC vocals', 'Favela energy'],
+    keyArtists: ['MC Kevin o Chris', 'Anitta', 'Ludmilla', 'DJ Dennis', 'MC Livinho'],
+    description: 'Born in Rio de Janeiro\'s favelas in the late 80s. NOT related to American funk—it\'s built on Miami Bass and African-Brazilian rhythms. The "tamborzão" beat pattern is instantly recognizable. Now one of the biggest genres in the world, blending baile funk energy with pop, trap, and reggaeton.',
+    promptTips: ['"Brazilian funk with tamborzão beat"', '"baile funk, favela energy, heavy bass"', '"funk carioca with MC vocals and call-response"', '"Anitta style Brazilian funk pop"'],
+    sampleLinks: [
+      { label: '🎵 Baile Funk Beat', url: 'https://cdn.pixabay.com/audio/2024/01/16/audio_3979e5ceab.mp3' },
+    ],
+    subgenres: ['Baile Funk', 'Funk Melody', 'Funk Consciente', 'Funk Pop', 'Brega Funk'],
+  },
+  {
+    name: 'Highlife', bpm: '100-130', timeSignature: '4/4',
+    commonScales: ['Major', 'Pentatonic Major', 'Dorian'],
+    characteristics: ['Jazzy guitar', 'Brass arrangements', 'Palm wine guitar', 'Polyrhythmic percussion', 'Call and response vocals', 'Walking bass'],
+    keyArtists: ['E.T. Mensah', 'Osibisa', 'Ebo Taylor', 'Pat Thomas', 'Gyedu-Blay Ambolley'],
+    description: 'Ghana\'s signature genre, born in the 1920s from the fusion of traditional Akan music with Western instruments (brass, guitar, jazz). Called "highlife" because the music was originally played at elite social clubs. Its guitar patterns directly influenced Afrobeats, Afro-pop, and soukous.',
+    promptTips: ['"highlife guitar with jazzy brass"', '"Ghanaian highlife, palm wine guitar"', '"modern highlife with Afrobeats influence"'],
+    sampleLinks: [
+      { label: '🎵 Highlife Guitar', url: 'https://cdn.pixabay.com/audio/2024/01/18/audio_cb73ddb46e.mp3' },
+    ],
+    subgenres: ['Burger Highlife', 'Gospel Highlife', 'Hiplife', 'Palm Wine'],
+  },
+  {
+    name: 'Soukous / Congolese Rumba', bpm: '120-160', timeSignature: '4/4',
+    commonScales: ['Major', 'Pentatonic Major', 'Mixolydian'],
+    characteristics: ['Rapid guitar picking (sebene)', 'Dancing bass lines', 'Brass & saxophones', 'Polyrhythmic drums', 'Soaring vocals', 'Snare rolls'],
+    keyArtists: ['Franco Luambo', 'Papa Wemba', 'Koffi Olomide', 'Fally Ipupa', 'Awilo Longomba'],
+    description: 'Born in the Congo in the 1930s-40s when Cuban rumba records arrived in Central Africa. Musicians fused the rumba with traditional Congolese rhythms, creating rumba Congolaise. The "sebene" (rapid-fire guitar section) is the genre\'s most thrilling feature—fingers flying at impossible speed.',
+    promptTips: ['"Congolese soukous with rapid guitar"', '"rumba Congolaise with sebene guitar solo"', '"African rumba with brass and dancing bass"'],
+    sampleLinks: [
+      { label: '🎵 Soukous Guitar', url: 'https://cdn.pixabay.com/audio/2024/01/18/audio_cb73ddb46e.mp3' },
+    ],
+    subgenres: ['Rumba Congolaise', 'Ndombolo', 'Sebene', 'Kwassa Kwassa'],
+  },
+  {
+    name: 'Gqom', bpm: '120-130', timeSignature: '4/4',
+    commonScales: ['Natural Minor', 'Phrygian'],
+    characteristics: ['Dark, minimal beats', 'Heavy kick drums', 'Sparse percussion', 'Raw and unpolished', 'Repetitive hypnotic patterns', 'Zulu chants'],
+    keyArtists: ['Babes Wodumo', 'DJ Lag', 'Distruction Boyz', 'Rudeboyz', 'Naked Boyz'],
+    description: 'Pronounced "gom"—born in Durban, South Africa\'s townships. Raw, dark, and hypnotic, Gqom is the gritty cousin of house music. Made on basic software in bedrooms and community centers, it captures the energy of Durban\'s underground club scene. The name means "drum" or "bang" in Zulu.',
+    promptTips: ['"gqom beat, dark and minimal"', '"Durban gqom with heavy kick and sparse percussion"', '"raw gqom, hypnotic and aggressive"'],
+    sampleLinks: [
+      { label: '🎵 Gqom Beat', url: 'https://cdn.pixabay.com/audio/2024/08/06/audio_69a61c5e14.mp3' },
+    ],
+    subgenres: ['Broken Gqom', 'Sgubhu', 'iKwekwezi'],
+  },
+  {
+    name: 'Kwaito', bpm: '100-120', timeSignature: '4/4',
+    commonScales: ['Natural Minor', 'Dorian', 'Pentatonic Minor'],
+    characteristics: ['Slowed-down house beats', 'Deep bass', 'Township vocals', 'Repetitive hooks', 'Spoken word elements', 'Isicathamiya influence'],
+    keyArtists: ['Mandoza', 'Arthur Mafokate', 'Boom Shaka', 'Trompies', 'Mdu Masilela'],
+    description: 'South Africa\'s post-apartheid soundtrack. Born in Johannesburg\'s townships in the early 90s, Kwaito slowed down house music to 100-120 BPM and added township slang lyrics. It was the first genre to truly represent Black South African youth culture after apartheid ended.',
+    promptTips: ['"kwaito beat, slowed house groove"', '"South African kwaito with deep bass and township vocals"', '"90s kwaito style, Mandoza influenced"'],
+    sampleLinks: [
+      { label: '🎵 Kwaito Groove', url: 'https://cdn.pixabay.com/audio/2024/08/06/audio_69a61c5e14.mp3' },
+    ],
+    subgenres: ['Old School Kwaito', 'New Kwaito', 'Kwaito House'],
+  },
+  {
+    name: 'Bongo Flava', bpm: '90-120', timeSignature: '4/4',
+    commonScales: ['Major', 'Pentatonic Major', 'Natural Minor'],
+    characteristics: ['Swahili lyrics', 'R&B influences', 'Taarab elements', 'Danceable grooves', 'Melodic hooks', 'Diverse instrumentation'],
+    keyArtists: ['Diamond Platnumz', 'Harmonize', 'Ali Kiba', 'Zuchu', 'Rayvanny'],
+    description: 'Tanzania\'s dominant pop genre, blending hip-hop, R&B, dancehall, and traditional taarab music. Named after "bongo" (brains, referring to street smarts needed in Dar es Salaam). It\'s become East Africa\'s biggest music export, with Diamond Platnumz reaching billions of views.',
+    promptTips: ['"bongo flava with Swahili vocals"', '"Tanzanian bongo flava, Diamond Platnumz style"', '"East African pop with taarab influences"'],
+    sampleLinks: [
+      { label: '🎵 Bongo Flava Beat', url: 'https://cdn.pixabay.com/audio/2024/01/18/audio_cb73ddb46e.mp3' },
+    ],
+    subgenres: ['Singeli', 'Bongo Hip-Hop', 'Bongo R&B'],
+  },
+  {
+    name: 'Cumbia', bpm: '80-110', timeSignature: '4/4',
+    commonScales: ['Major', 'Pentatonic Major', 'Mixolydian'],
+    characteristics: ['Shuffling rhythm', 'Accordion', 'Gaita flute', 'Steady percussion', 'Call and response', 'Dancing bass'],
+    keyArtists: ['Celso Piña', 'Los Ángeles Azules', 'Bomba Estéreo', 'Lucho Bermúdez', 'Andrés Landero'],
+    description: 'Born on Colombia\'s Caribbean coast from the fusion of African drums, Indigenous flutes, and Spanish melodies. Cumbia spread across ALL of Latin America, each country creating its own version. It\'s the mother rhythm of Latin American popular music—older and more widespread than salsa or reggaeton.',
+    promptTips: ['"cumbia with accordion and shuffling rhythm"', '"Colombian cumbia, gaita flute"', '"modern digital cumbia, Bomba Estéreo style"', '"Mexican cumbia with synth accordion"'],
+    sampleLinks: [
+      { label: '🎵 Cumbia Rhythm', url: 'https://cdn.pixabay.com/audio/2023/04/04/audio_5bfb8b2a77.mp3' },
+    ],
+    subgenres: ['Cumbia Villera', 'Cumbia Sonidera', 'Digital Cumbia', 'Cumbia Colombiana', 'Chicha'],
+  },
+  {
+    name: 'Sega / Maloya', bpm: '100-140', timeSignature: '6/8',
+    commonScales: ['Major', 'Pentatonic Major', 'Mixolydian'],
+    characteristics: ['Ravanne drum', 'Swaying rhythm', 'Creole lyrics', 'Triangle percussion', 'Call and response', 'Island groove'],
+    keyArtists: ['Ti Frère', 'Kaya', 'Cassiya', 'Danyèl Waro', 'Grup Latanier'],
+    description: 'The music of the Indian Ocean islands—Mauritius, Réunion, Seychelles. Sega was born from enslaved peoples\' musical traditions, played on the ravanne (goatskin drum). Maloya (Réunion\'s version) was actually BANNED by French colonial authorities until 1981 because of its connection to resistance. Now a UNESCO cultural heritage.',
+    promptTips: ['"sega music with ravanne drum and island rhythm"', '"Mauritian sega, Creole vocals"', '"maloya rhythm, spiritual and earthy"'],
+    sampleLinks: [
+      { label: '🎵 Island Groove', url: 'https://cdn.pixabay.com/audio/2022/05/16/audio_1bfdb6ec64.mp3' },
+    ],
+    subgenres: ['Seggae (Sega + Reggae)', 'Sega Tipik', 'Maloya Électrique'],
+  },
+  {
+    name: 'Gnawa / Moroccan', bpm: '80-130', timeSignature: '4/4, 6/8',
+    commonScales: ['Phrygian', 'Natural Minor', 'Harmonic Minor'],
+    characteristics: ['Guembri bass lute', 'Iron castanets (qraqeb)', 'Spiritual chanting', 'Trance-inducing repetition', 'Call and response'],
+    keyArtists: ['Maalem Mahmoud Guinia', 'Hassan Hakmoun', 'Tinariwen', 'Bombino'],
+    description: 'North African spiritual music with Sub-Saharan roots, brought to Morocco by enslaved peoples from West Africa. Gnawa ceremonies (lila) use repetitive bass patterns and iron castanets to induce trance states. The guembri (3-string bass lute) produces a deep, buzzy tone unlike anything else in world music.',
+    promptTips: ['"gnawa trance music with guembri bass"', '"Moroccan gnawa, spiritual chanting"', '"desert blues, Tinariwen inspired"', '"North African trance with castanets"'],
+    sampleLinks: [
+      { label: '🎵 Desert Blues', url: 'https://cdn.pixabay.com/audio/2023/08/10/audio_a0e6c557e1.mp3' },
+    ],
+    subgenres: ['Gnawa Fusion', 'Desert Blues', 'Tuareg Guitar', 'Chaabi'],
+  },
+  {
+    name: 'Kuduro', bpm: '130-140', timeSignature: '4/4',
+    commonScales: ['Natural Minor', 'Pentatonic Minor'],
+    characteristics: ['Hard electronic beats', 'Zouk bass', 'Portuguese/Kimbundu lyrics', 'Frenetic energy', 'Raw production', 'Dance-focused'],
+    keyArtists: ['Buraka Som Sistema', 'DJ Marfox', 'Puto Prata', 'Titica', 'Os Lambas'],
+    description: 'Angola\'s electronic dance music, born in Luanda\'s musseques (informal settlements) in the late 80s. The name means "hard ass" in Portuguese slang, referring to the dance style. Made with basic equipment, it\'s raw, frenetic, and impossible not to dance to. Spread to Portugal and influenced global bass music.',
+    promptTips: ['"kuduro beat, hard electronic and frenetic"', '"Angolan kuduro with zouk bass"', '"kuduro with raw production and fast rhythm"'],
+    sampleLinks: [
+      { label: '🎵 Kuduro Energy', url: 'https://cdn.pixabay.com/audio/2024/06/13/audio_e5f8b31b81.mp3' },
+    ],
+    subgenres: ['Kuduro Progressivo', 'Batida', 'Afro-House'],
+  },
+  {
+    name: 'Calypso / Soca', bpm: '130-160', timeSignature: '4/4',
+    commonScales: ['Major', 'Mixolydian', 'Pentatonic Major'],
+    characteristics: ['Steel pan', 'Brass section', 'Energetic percussion', 'Social commentary lyrics', 'Carnival energy', 'Call and response'],
+    keyArtists: ['Mighty Sparrow', 'Machel Montano', 'Bunji Garlin', 'Destra Garcia', 'Lord Kitchener'],
+    description: 'Trinidad & Tobago\'s gift to the world. Calypso evolved from West African call-and-response traditions and was historically used for political commentary and social protest. Soca ("soul of calypso") is its high-energy, party-focused evolution, powering Caribbean Carnival celebrations globally.',
+    promptTips: ['"soca with steel pan and carnival energy"', '"calypso with social commentary vocals"', '"Trinidad soca, Machel Montano style"'],
+    sampleLinks: [
+      { label: '🎵 Carnival Rhythm', url: 'https://cdn.pixabay.com/audio/2022/05/16/audio_1bfdb6ec64.mp3' },
+    ],
+    subgenres: ['Power Soca', 'Groovy Soca', 'Parang Soca', 'Chutney Soca'],
   },
 ];
