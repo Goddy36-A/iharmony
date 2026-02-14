@@ -408,10 +408,9 @@ export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => vo
   gainNode.gain.setValueAtTime(0, ctx.currentTime);
   gainNode.connect(ctx.destination);
 
-  let filter: BiquadFilterNode | null = null;
   let output: AudioNode = gainNode;
   if (synth.filterFreq) {
-    filter = ctx.createBiquadFilter();
+    const filter = ctx.createBiquadFilter();
     filter.type = 'lowpass';
     filter.frequency.value = synth.filterFreq;
     filter.Q.value = 1;
@@ -420,10 +419,10 @@ export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => vo
   }
 
   const oscillators: OscillatorNode[] = [];
-  const noteGains: GainNode[] = [];
+  const now = ctx.currentTime + 0.05; // small offset to avoid negative times
 
   notes.forEach((mult, i) => {
-    const startTime = ctx.currentTime + i * noteTime;
+    const startTime = now + i * noteTime;
     const freq = synth.baseFreq * mult;
     const { attack, decay, sustain, release } = synth.envelope;
 
@@ -432,11 +431,17 @@ export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => vo
     osc.frequency.setValueAtTime(freq, startTime);
     if (synth.detune) osc.detune.setValueAtTime(synth.detune, startTime);
 
+    // Clamp envelope times to fit within noteTime
+    const envAttack = Math.min(attack, noteTime * 0.3);
+    const envDecay = Math.min(decay, noteTime * 0.3);
+    const envRelease = Math.min(release, noteTime * 0.3);
+    const sustainEnd = Math.max(startTime + envAttack + envDecay, startTime + noteTime - envRelease);
+
     const noteGain = ctx.createGain();
     noteGain.gain.setValueAtTime(0, startTime);
-    noteGain.gain.linearRampToValueAtTime(0.3, startTime + attack);
-    noteGain.gain.linearRampToValueAtTime(0.3 * sustain, startTime + attack + decay);
-    noteGain.gain.setValueAtTime(0.3 * sustain, startTime + noteTime - release);
+    noteGain.gain.linearRampToValueAtTime(0.3, startTime + envAttack);
+    noteGain.gain.linearRampToValueAtTime(0.3 * sustain, startTime + envAttack + envDecay);
+    noteGain.gain.setValueAtTime(0.3 * sustain, sustainEnd);
     noteGain.gain.linearRampToValueAtTime(0, startTime + noteTime);
 
     osc.connect(noteGain);
@@ -444,7 +449,6 @@ export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => vo
     osc.start(startTime);
     osc.stop(startTime + noteTime + 0.05);
     oscillators.push(osc);
-    noteGains.push(noteGain);
   });
 
   let stopped = false;
@@ -455,7 +459,7 @@ export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => vo
     ctx.close();
   };
 
-  setTimeout(stop, totalTime * 1000 + 200);
+  setTimeout(stop, totalTime * 1000 + 300);
 
   return { stop };
 }
