@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { Music, Piano, Layers, BookOpen, Headphones, GraduationCap, Globe } from 'lucide-react';
+import { Music, Piano, Layers, BookOpen, Headphones, GraduationCap, Globe, Guitar } from 'lucide-react';
 import ScaleExplorer from '@/components/ScaleExplorer';
 import ChordProgressions from '@/components/ChordProgressions';
 import SongStructures from '@/components/SongStructures';
 import GenreGuide from '@/components/GenreGuide';
 import ProductionGlossary from '@/components/ProductionGlossary';
+import InstrumentGuide from '@/components/InstrumentGuide';
 
 const tabs = [
   { id: 'glossary', label: 'Dictionary', icon: GraduationCap, description: 'Producer dictionary & prompt tips' },
+  { id: 'instruments', label: 'Instruments', icon: Guitar, description: 'Learn how instruments sound' },
   { id: 'genres', label: 'Genres', icon: Globe, description: 'Genre knowledge base + samples' },
   { id: 'scales', label: 'Scales', icon: Piano, description: 'Music theory reference' },
   { id: 'chords', label: 'Chords', icon: Headphones, description: 'Chord progressions' },
@@ -56,6 +58,7 @@ const Index = () => {
 
         {/* Tab content */}
         {activeTab === 'glossary' && <ProductionGlossary />}
+        {activeTab === 'instruments' && <InstrumentGuide />}
         {activeTab === 'scales' && <ScaleExplorer />}
         {activeTab === 'chords' && <ChordProgressions />}
         {activeTab === 'structure' && <SongStructures />}
