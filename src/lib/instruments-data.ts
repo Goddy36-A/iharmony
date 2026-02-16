@@ -399,13 +399,14 @@ export const INSTRUMENTS: InstrumentInfo[] = [
 // Play an instrument demo using Web Audio API
 export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => void } {
   const ctx = new AudioContext();
+  if (ctx.state === 'suspended') ctx.resume();
   const { synth } = instrument;
   const notes = synth.notes || [1];
   const noteTime = 0.35;
   const totalTime = notes.length * noteTime;
 
   const gainNode = ctx.createGain();
-  gainNode.gain.setValueAtTime(0, ctx.currentTime);
+  gainNode.gain.setValueAtTime(1, ctx.currentTime);
   gainNode.connect(ctx.destination);
 
   let output: AudioNode = gainNode;
