@@ -398,69 +398,97 @@ export const INSTRUMENTS: InstrumentInfo[] = [
 
 // Play an instrument demo using Web Audio API
 export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => void } {
-  const ctx = new AudioContext();
-  if (ctx.state === 'suspended') ctx.resume();
+  console.log('[InstrumentDemo] Starting demo for:', instrument.name);
+  
+  let ctx: AudioContext;
+  try {
+    ctx = new AudioContext();
+    console.log('[InstrumentDemo] AudioContext state:', ctx.state, 'sampleRate:', ctx.sampleRate);
+  } catch (e) {
+    console.error('[InstrumentDemo] Failed to create AudioContext:', e);
+    return { stop: () => {} };
+  }
+
+  // Resume must be awaited but we handle it gracefully
+  const resumePromise = ctx.state === 'suspended' ? ctx.resume() : Promise.resolve();
+  resumePromise.then(() => {
+    console.log('[InstrumentDemo] AudioContext resumed, state:', ctx.state);
+  }).catch(e => {
+    console.error('[InstrumentDemo] Failed to resume:', e);
+  });
+
   const { synth } = instrument;
   const notes = synth.notes || [1];
   const noteTime = 0.35;
   const totalTime = notes.length * noteTime;
 
-  const gainNode = ctx.createGain();
-  gainNode.gain.setValueAtTime(1, ctx.currentTime);
-  gainNode.connect(ctx.destination);
+  console.log('[InstrumentDemo] Notes:', notes.length, 'totalTime:', totalTime, 'synth type:', synth.type, 'baseFreq:', synth.baseFreq);
 
-  let output: AudioNode = gainNode;
-  if (synth.filterFreq) {
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = synth.filterFreq;
-    filter.Q.value = 1;
-    filter.connect(gainNode);
-    output = filter;
+  try {
+    const gainNode = ctx.createGain();
+    gainNode.gain.setValueAtTime(1, ctx.currentTime);
+    gainNode.connect(ctx.destination);
+
+    let output: AudioNode = gainNode;
+    if (synth.filterFreq) {
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = synth.filterFreq;
+      filter.Q.value = 1;
+      filter.connect(gainNode);
+      output = filter;
+    }
+
+    const oscillators: OscillatorNode[] = [];
+    const now = ctx.currentTime + 0.1;
+
+    notes.forEach((mult, i) => {
+      const startTime = now + i * noteTime;
+      const freq = synth.baseFreq * mult;
+      const { attack, decay, sustain, release } = synth.envelope;
+
+      const osc = ctx.createOscillator();
+      osc.type = synth.type;
+      osc.frequency.setValueAtTime(freq, startTime);
+      if (synth.detune) osc.detune.setValueAtTime(synth.detune, startTime);
+
+      // Clamp envelope times to fit within noteTime
+      const envAttack = Math.min(attack, noteTime * 0.3);
+      const envDecay = Math.min(decay, noteTime * 0.3);
+      const envRelease = Math.min(release, noteTime * 0.3);
+      const sustainEnd = Math.max(startTime + envAttack + envDecay, startTime + noteTime - envRelease);
+
+      const noteGain = ctx.createGain();
+      noteGain.gain.setValueAtTime(0, startTime);
+      noteGain.gain.linearRampToValueAtTime(0.3, startTime + envAttack);
+      noteGain.gain.linearRampToValueAtTime(0.3 * sustain, startTime + envAttack + envDecay);
+      noteGain.gain.setValueAtTime(0.3 * sustain, sustainEnd);
+      noteGain.gain.linearRampToValueAtTime(0, startTime + noteTime);
+
+      osc.connect(noteGain);
+      noteGain.connect(output);
+      osc.start(startTime);
+      osc.stop(startTime + noteTime + 0.1);
+      oscillators.push(osc);
+    });
+
+    console.log('[InstrumentDemo] All oscillators scheduled successfully');
+
+    let stopped = false;
+    const stop = () => {
+      if (stopped) return;
+      stopped = true;
+      console.log('[InstrumentDemo] Stopping demo');
+      oscillators.forEach(o => { try { o.stop(); } catch {} });
+      ctx.close().catch(() => {});
+    };
+
+    setTimeout(stop, totalTime * 1000 + 500);
+
+    return { stop };
+  } catch (e) {
+    console.error('[InstrumentDemo] Error scheduling audio:', e);
+    ctx.close().catch(() => {});
+    return { stop: () => {} };
   }
-
-  const oscillators: OscillatorNode[] = [];
-  const now = ctx.currentTime + 0.05; // small offset to avoid negative times
-
-  notes.forEach((mult, i) => {
-    const startTime = now + i * noteTime;
-    const freq = synth.baseFreq * mult;
-    const { attack, decay, sustain, release } = synth.envelope;
-
-    const osc = ctx.createOscillator();
-    osc.type = synth.type;
-    osc.frequency.setValueAtTime(freq, startTime);
-    if (synth.detune) osc.detune.setValueAtTime(synth.detune, startTime);
-
-    // Clamp envelope times to fit within noteTime
-    const envAttack = Math.min(attack, noteTime * 0.3);
-    const envDecay = Math.min(decay, noteTime * 0.3);
-    const envRelease = Math.min(release, noteTime * 0.3);
-    const sustainEnd = Math.max(startTime + envAttack + envDecay, startTime + noteTime - envRelease);
-
-    const noteGain = ctx.createGain();
-    noteGain.gain.setValueAtTime(0, startTime);
-    noteGain.gain.linearRampToValueAtTime(0.3, startTime + envAttack);
-    noteGain.gain.linearRampToValueAtTime(0.3 * sustain, startTime + envAttack + envDecay);
-    noteGain.gain.setValueAtTime(0.3 * sustain, sustainEnd);
-    noteGain.gain.linearRampToValueAtTime(0, startTime + noteTime);
-
-    osc.connect(noteGain);
-    noteGain.connect(output);
-    osc.start(startTime);
-    osc.stop(startTime + noteTime + 0.05);
-    oscillators.push(osc);
-  });
-
-  let stopped = false;
-  const stop = () => {
-    if (stopped) return;
-    stopped = true;
-    oscillators.forEach(o => { try { o.stop(); } catch {} });
-    ctx.close();
-  };
-
-  setTimeout(stop, totalTime * 1000 + 300);
-
-  return { stop };
 }
