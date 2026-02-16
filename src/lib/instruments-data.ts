@@ -394,35 +394,306 @@ export const INSTRUMENTS: InstrumentInfo[] = [
     promptTip: 'Use "accordion" for European/Latin folk feel. "Bandoneon" specifically for tango.',
     synth: { type: 'square', baseFreq: 330, envelope: { attack: 0.08, decay: 0.05, sustain: 0.8, release: 0.2 }, filterFreq: 1500, detune: 4, notes: [1, 1.125, 1.25, 1.33, 1.25, 1.125, 1] }
   },
+
+  // ─── STRINGS (expanded) ───
+  {
+    name: 'Banjo',
+    category: 'Strings',
+    icon: '🪕',
+    description: 'Five-stringed instrument with a bright, twangy tone. Central to bluegrass, country, and Appalachian folk music.',
+    soundCharacter: 'Bright, metallic, percussive attack with rapid decay. The open-back has a mellower tone; resonator backs project loudly.',
+    howItSounds: 'A rapid, plucky, almost "plinky" sound — like a guitar but much brighter and more percussive, with notes that pop out sharply.',
+    genres: ['Bluegrass', 'Country', 'Folk', 'Dixieland Jazz', 'Celtic'],
+    promptTip: 'Use "banjo rolls" for fast fingerpicking patterns, "clawhammer banjo" for old-time folk.',
+    synth: { type: 'triangle', baseFreq: 392, envelope: { attack: 0.005, decay: 0.15, sustain: 0.1, release: 0.3 }, notes: [1, 1.25, 1.5, 1.25, 1, 1.5, 1.25, 1] }
+  },
+  {
+    name: 'Mandolin',
+    category: 'Strings',
+    icon: '🪕',
+    description: 'Small, eight-stringed instrument (four pairs) with a bright, shimmering tone. Used in bluegrass, classical, and Mediterranean music.',
+    soundCharacter: 'Bright, chiming, with a characteristic tremolo effect when notes are rapidly alternated. Sweet and clear in the upper register.',
+    howItSounds: 'Like a tiny, sparkling guitar — notes shimmer and ring with a silvery quality. When tremolo-picked, it creates a sustained, shivering sound.',
+    genres: ['Bluegrass', 'Classical', 'Irish Folk', 'Italian Folk', 'Country'],
+    promptTip: 'Use "mandolin tremolo" for sustained shimmering notes, "mandolin chop" for rhythmic accents.',
+    synth: { type: 'triangle', baseFreq: 440, envelope: { attack: 0.005, decay: 0.12, sustain: 0.15, release: 0.25 }, detune: 3, notes: [1, 1.125, 1.25, 1.5, 1.25, 1.125, 1] }
+  },
+  {
+    name: 'Pedal Steel Guitar',
+    category: 'Strings',
+    icon: '🎸',
+    description: 'Table-mounted guitar with foot pedals and knee levers that bend notes smoothly. The defining sound of classic country.',
+    soundCharacter: 'Smooth, crying, with signature sliding pitch bends. Warm and liquid, with notes that glide seamlessly into each other.',
+    howItSounds: 'A weeping, swooping sound — notes seem to cry and moan as they slide between pitches. Like a guitar made of liquid honey.',
+    genres: ['Country', 'Western Swing', 'Americana', 'Ambient', 'Shoegaze'],
+    promptTip: 'Use "pedal steel" or "crying steel guitar" for that classic country weeping sound.',
+    synth: { type: 'sine', baseFreq: 330, envelope: { attack: 0.05, decay: 0.1, sustain: 0.7, release: 0.6 }, notes: [1, 1.06, 1.125, 1.25, 1.125, 1] }
+  },
+  {
+    name: 'Ukulele',
+    category: 'Strings',
+    icon: '🪕',
+    description: 'Small four-stringed Hawaiian instrument. Cheerful, bright tone that evokes tropical and feel-good vibes.',
+    soundCharacter: 'Light, bright, and cheerful with a quick, gentle attack. Nylon strings give it a soft, friendly quality.',
+    howItSounds: 'A tiny, happy-sounding guitar — like sunshine turned into music. Light strumming creates an instant feel-good island vibe.',
+    genres: ['Hawaiian', 'Pop', 'Indie Folk', 'Children\'s Music'],
+    promptTip: 'Use "ukulele strumming" for cheerful, tropical energy. Great for lighthearted and playful moods.',
+    synth: { type: 'sine', baseFreq: 440, envelope: { attack: 0.01, decay: 0.2, sustain: 0.15, release: 0.3 }, notes: [1, 1.25, 1.5, 1.33, 1, 1.25] }
+  },
+
+  // ─── KEYS & MALLETS (expanded) ───
+  {
+    name: 'Organ (Hammond)',
+    category: 'Keys & Mallets',
+    icon: '🎹',
+    description: 'Tonewheel organ with rotating Leslie speaker. Essential in gospel, jazz, blues, and classic rock.',
+    soundCharacter: 'Rich, full, buzzy harmonics with rotating speaker effect. Can be mellow or screaming depending on drawbar settings.',
+    howItSounds: 'A big, swirling, buzzy tone — like a choir of bees singing in harmony. The Leslie speaker adds a dreamy, rotating wobble.',
+    genres: ['Gospel', 'Blues', 'Jazz', 'Classic Rock', 'Soul', 'Reggae'],
+    promptTip: 'Use "Hammond organ" or "B3 organ" for soulful/rock. Add "Leslie speaker" for the swirling effect.',
+    synth: { type: 'square', baseFreq: 262, envelope: { attack: 0.02, decay: 0.05, sustain: 0.85, release: 0.15 }, filterFreq: 2500, detune: 6, notes: [1, 1.25, 1.5, 1, 1.25, 1.5, 1.33, 1] }
+  },
+  {
+    name: 'Vibraphone',
+    category: 'Keys & Mallets',
+    icon: '🎵',
+    description: 'Metal-barred percussion instrument with motor-driven resonators that create a pulsing vibrato. A staple of cool jazz.',
+    soundCharacter: 'Bell-like, shimmering, with a distinctive wobbling vibrato. Metallic but warm, notes sustain beautifully.',
+    howItSounds: 'Imagine a xylophone made of silver — notes ring out with a warm, glowing shimmer, gently pulsing with a dreamy vibrato.',
+    genres: ['Jazz', 'Easy Listening', 'Film Scores', 'Neo-Soul', 'Ambient'],
+    promptTip: 'Use "vibraphone" or "vibes" for sophisticated jazz texture. "Mallet instrument" for a more general bell-like tone.',
+    synth: { type: 'sine', baseFreq: 440, envelope: { attack: 0.01, decay: 0.8, sustain: 0.3, release: 1.0 }, detune: 2, notes: [1, 1.25, 1.5, 1.33, 1, 0.75] }
+  },
+  {
+    name: 'Celesta',
+    category: 'Keys & Mallets',
+    icon: '✨',
+    description: 'Keyboard instrument with hammers striking metal plates. Produces a delicate, bell-like sparkle. Famous from "Dance of the Sugar Plum Fairy."',
+    soundCharacter: 'Ethereal, glassy, crystalline. Like tiny bells being played by a fairy — magical and delicate.',
+    howItSounds: 'Twinkling, music-box-like notes that sparkle and float. Each note sounds like a tiny star chiming.',
+    genres: ['Classical', 'Film Scores', 'Fantasy Soundtracks', 'Holiday Music'],
+    promptTip: 'Use "celesta" for magical, fairy-tale sparkle. Great for fantasy or whimsical moods.',
+    synth: { type: 'sine', baseFreq: 523, envelope: { attack: 0.005, decay: 0.4, sustain: 0.1, release: 0.6 }, notes: [1, 1.25, 1.5, 1.75, 2, 1.5, 1] }
+  },
+
+  // ─── BRASS (expanded) ───
+  {
+    name: 'Tuba',
+    category: 'Brass',
+    icon: '🎺',
+    description: 'The largest and lowest brass instrument. Provides the bass foundation in brass bands, orchestras, and marching bands.',
+    soundCharacter: 'Deep, round, and resonant. Warm and powerful in the low register, with a surprisingly agile character.',
+    howItSounds: 'A deep, booming "oom-pah" sound — like a giant blowing into a massive golden pipe. Rich and rumbling.',
+    genres: ['Classical', 'Marching Band', 'Brass Band', 'Polka', 'New Orleans Jazz'],
+    promptTip: 'Use "tuba" for bass brass lines. "Sousaphone" for marching band feel.',
+    synth: { type: 'sawtooth', baseFreq: 65, envelope: { attack: 0.06, decay: 0.1, sustain: 0.7, release: 0.3 }, filterFreq: 400, notes: [1, 1.33, 1, 0.75, 1, 1.33, 1] }
+  },
+
+  // ─── WOODWINDS (expanded) ───
+  {
+    name: 'Oboe',
+    category: 'Woodwinds',
+    icon: '🎵',
+    description: 'Double-reed woodwind with a penetrating, nasal tone. Often carries the melody in orchestral music and tunes the orchestra.',
+    soundCharacter: 'Reedy, nasal, penetrating, and bittersweet. Highly expressive with a vocal, almost human quality.',
+    howItSounds: 'A plaintive, slightly nasal singing voice — like someone humming through their nose in the most beautiful way. Piercing but sweet.',
+    genres: ['Classical', 'Baroque', 'Film Scores', 'Chamber Music'],
+    promptTip: 'Use "oboe" for pastoral, melancholic, or noble melodies. Perfect for expressing longing.',
+    synth: { type: 'sawtooth', baseFreq: 440, envelope: { attack: 0.04, decay: 0.08, sustain: 0.7, release: 0.2 }, filterFreq: 1800, notes: [1, 1.125, 1.25, 1.33, 1.25, 1.125, 1] }
+  },
+  {
+    name: 'Harmonica',
+    category: 'Woodwinds',
+    icon: '🎵',
+    description: 'Free-reed instrument played by blowing and drawing air. Essential in blues, folk, country, and rock.',
+    soundCharacter: 'Wailing, bending, raw and expressive. Can be sweet and folksy or gritty and bluesy depending on technique.',
+    howItSounds: 'A wailing, moaning, human-like cry — notes bend and slide like a voice. Sounds lonely on a train platform at midnight.',
+    genres: ['Blues', 'Folk', 'Country', 'Rock', 'Americana'],
+    promptTip: 'Use "blues harmonica" or "blues harp" for gritty feel. "Chromatic harmonica" for jazz/classical.',
+    synth: { type: 'square', baseFreq: 392, envelope: { attack: 0.03, decay: 0.05, sustain: 0.8, release: 0.15 }, filterFreq: 2000, notes: [1, 1.125, 1, 0.89, 1, 1.125, 1.25, 1] }
+  },
+  {
+    name: 'Bagpipes',
+    category: 'Woodwinds',
+    icon: '🎵',
+    description: 'Reed instrument with a constant drone supplied by an air bag. Iconic in Scottish, Irish, and various folk traditions.',
+    soundCharacter: 'Loud, droning, piercing, and majestic. The continuous drone creates a hypnotic bed under the melody.',
+    howItSounds: 'A loud, buzzing wail over a constant humming drone — like a swarm of noble bees marching into battle. Impossible to ignore.',
+    genres: ['Celtic', 'Scottish Folk', 'Military', 'Medieval', 'World Fusion'],
+    promptTip: 'Use "bagpipes" for dramatic, Celtic, or military atmosphere. Pair with "drone" for authenticity.',
+    synth: { type: 'sawtooth', baseFreq: 370, envelope: { attack: 0.1, decay: 0.05, sustain: 0.9, release: 0.1 }, filterFreq: 1200, detune: 5, notes: [1, 1.125, 1.25, 1.33, 1.25, 1, 1] }
+  },
+
+  // ─── PERCUSSION (expanded) ───
+  {
+    name: 'Cajón',
+    category: 'Percussion',
+    icon: '🪘',
+    description: 'Wooden box drum originating from Peru. Played by slapping the front face while sitting on it. Popular in acoustic and flamenco settings.',
+    soundCharacter: 'Warm, woody bass tones from the center; sharp, snappy highs from the edges. A full drum kit in a single box.',
+    howItSounds: 'Like a kick drum and snare combined in a wooden box — deep thump when you hit the middle, crisp slap on the edges.',
+    genres: ['Flamenco', 'Acoustic Pop', 'Latin', 'Singer-Songwriter', 'Unplugged'],
+    promptTip: 'Use "cajón" for acoustic/unplugged percussion. Great alternative to a full drum kit.',
+    synth: { type: 'triangle', baseFreq: 80, envelope: { attack: 0.005, decay: 0.15, sustain: 0.05, release: 0.1 }, notes: [1, 2, 1, 2.5, 1, 1, 2, 1] }
+  },
+  {
+    name: 'Tambourine',
+    category: 'Percussion',
+    icon: '🪩',
+    description: 'Frame drum with metal jingles. Adds brightness and rhythm to almost any music style. Shaken, struck, or played with fingers.',
+    soundCharacter: 'Bright, shimmery, jangling metallic rattle. Adds sparkle and energy to rhythms.',
+    howItSounds: 'A shaking, jingling brightness — like shaking a handful of tiny bells. Adds an instant party feel to any beat.',
+    genres: ['Pop', 'Rock', 'Gospel', 'Folk', 'Dance', 'R&B'],
+    promptTip: 'Use "tambourine" for rhythmic shimmer. "Tambourine hits" for accents on 2 and 4.',
+    synth: { type: 'square', baseFreq: 800, envelope: { attack: 0.001, decay: 0.08, sustain: 0.02, release: 0.1 }, filterFreq: 3000, notes: [1, 0, 1, 0, 1, 1, 0, 1] }
+  },
+  {
+    name: 'Talking Drum',
+    category: 'Percussion',
+    icon: '🪘',
+    description: 'West African hourglass-shaped drum that can mimic the tones of speech by squeezing the tension cords while playing.',
+    soundCharacter: 'Melodic, pitch-bending percussion. The tone sweeps up and down, creating a "talking" effect unique to this drum.',
+    howItSounds: 'A drum that speaks — the pitch slides up and down as the player squeezes it, making it sound like it\'s having a conversation.',
+    genres: ['West African', 'Afrobeat', 'World Fusion', 'Experimental'],
+    promptTip: 'Use "talking drum" for pitch-bending African percussion. Adds vocal-like rhythmic texture.',
+    synth: { type: 'triangle', baseFreq: 200, envelope: { attack: 0.01, decay: 0.2, sustain: 0.3, release: 0.15 }, notes: [1, 1.5, 0.75, 1.25, 1, 1.75, 1.25, 1] }
+  },
+
+  // ─── BASS (expanded) ───
+  {
+    name: 'Synth Bass',
+    category: 'Bass',
+    icon: '🎛️',
+    description: 'Synthesized bass sounds ranging from wobbly dubstep to punchy funk. The backbone of electronic music.',
+    soundCharacter: 'Thick, powerful, and infinitely variable. Can be smooth sub-bass, gritty acid bass, or wobbly dubstep growl.',
+    howItSounds: 'A deep, throbbing electronic pulse you feel in your chest more than hear. Can wobble, growl, or punch depending on style.',
+    genres: ['EDM', 'Dubstep', 'House', 'Drum & Bass', 'Synthwave', 'Funk'],
+    promptTip: 'Specify style: "acid bass" (squelchy), "sub bass" (deep), "reese bass" (detuned), "wobble bass" (dubstep).',
+    synth: { type: 'sawtooth', baseFreq: 55, envelope: { attack: 0.01, decay: 0.15, sustain: 0.6, release: 0.2 }, filterFreq: 300, detune: 8, notes: [1, 1, 1.33, 1, 1.5, 1, 1.33, 1] }
+  },
+  {
+    name: 'Fretless Bass',
+    category: 'Bass',
+    icon: '🎸',
+    description: 'Bass guitar without frets, allowing smooth slides between notes. Famous from Jaco Pastorius\' revolutionary playing.',
+    soundCharacter: 'Smooth, singing, "mwah" quality with vocal-like slides. Warm and expressive with endless sustain.',
+    howItSounds: 'A bass that sings — notes slide smoothly into each other like a voice, with a distinctive "mwah" buzz on each note.',
+    genres: ['Jazz Fusion', 'R&B', 'Progressive Rock', 'World Music'],
+    promptTip: 'Use "fretless bass" for smooth, singing bass lines. "Jaco-style bass" for jazz fusion.',
+    synth: { type: 'sine', baseFreq: 82, envelope: { attack: 0.03, decay: 0.1, sustain: 0.7, release: 0.4 }, notes: [1, 1.125, 1.25, 1.33, 1.5, 1.33, 1.25, 1] }
+  },
+
+  // ─── ELECTRONIC (expanded) ───
+  {
+    name: 'Arpeggiator / Synth Arp',
+    category: 'Electronic',
+    icon: '🎛️',
+    description: 'Automatically plays notes of a chord in sequence. Creates hypnotic, cascading patterns central to electronic and synth-pop music.',
+    soundCharacter: 'Rhythmic, cascading, hypnotic sequences. Can be bubbly, dark, soaring, or mechanical depending on sound design.',
+    howItSounds: 'A rapid, repeating cascade of notes running up and down — like musical stairs being climbed at high speed, over and over.',
+    genres: ['Synthwave', 'Trance', 'Synth-Pop', 'Italo Disco', 'Ambient'],
+    promptTip: 'Use "synth arpeggio" or "arp sequence" for pulsing electronic patterns. Specify "fast arp" or "slow arp".',
+    synth: { type: 'sawtooth', baseFreq: 262, envelope: { attack: 0.005, decay: 0.1, sustain: 0.3, release: 0.15 }, filterFreq: 3000, notes: [1, 1.25, 1.5, 2, 1.5, 1.25, 1, 0.75] }
+  },
+  {
+    name: 'Vocoder',
+    category: 'Electronic',
+    icon: '🤖',
+    description: 'Encodes a voice signal onto a synthesizer, creating robotic vocal effects. Iconic in funk, electronic, and experimental music.',
+    soundCharacter: 'Robotic, choir-like, alien. Human speech becomes musical — vowels turn into chords, words become melodies.',
+    howItSounds: 'A robot choir singing — human words processed through a synthesizer so they sound mechanical and harmonized simultaneously.',
+    genres: ['Funk', 'Electronic', 'Hip-Hop', 'Synthwave', 'Experimental'],
+    promptTip: 'Use "vocoder vocals" or "talk box" for robotic singing. "Daft Punk style vocals" for the classic effect.',
+    synth: { type: 'sawtooth', baseFreq: 220, envelope: { attack: 0.02, decay: 0.05, sustain: 0.8, release: 0.1 }, filterFreq: 1500, detune: 10, notes: [1, 1, 1.25, 1.25, 1.5, 1.5, 1.33, 1] }
+  },
+
+  // ─── WORLD / FOLK (expanded) ───
+  {
+    name: 'Mbira',
+    category: 'World / Folk',
+    icon: '🎵',
+    description: 'Zimbabwean thumb piano with metal tines mounted on a wooden board, often inside a gourd resonator. Sacred instrument of the Shona people.',
+    soundCharacter: 'Delicate, crystalline, buzzy-sweet. The metal tines create interlocking patterns with a characteristic buzzing overtone.',
+    howItSounds: 'Like a music box from the forest — bright, plinking metallic notes with a mysterious buzzing rattle underneath. Hypnotic and ancient.',
+    genres: ['Zimbabwean', 'Afro-Pop', 'World Music', 'Ambient', 'Neo-Folk'],
+    promptTip: 'Use "mbira" for Zimbabwean/Shona texture. Different from kalimba — mbira has a buzzier, more complex resonance.',
+    synth: { type: 'triangle', baseFreq: 523, envelope: { attack: 0.005, decay: 0.3, sustain: 0.15, release: 0.4 }, detune: 3, notes: [1, 0.75, 1.25, 1, 0.89, 1.125, 0.75, 1] }
+  },
+  {
+    name: 'Guzheng',
+    category: 'World / Folk',
+    icon: '🎵',
+    description: 'Chinese 21-string zither with a 2,500-year history. Plucked with fingerpicks, producing cascading, shimmering arpeggios.',
+    soundCharacter: 'Bright, resonant, cascading. Strings vibrate with a silky shimmer. Bends and slides give it an expressive, vocal quality.',
+    howItSounds: 'Imagine a waterfall made of silk threads — cascading, glittering notes that flow and shimmer, with dramatic bends between pitches.',
+    genres: ['Chinese Classical', 'Chinese Pop', 'World Fusion', 'Film Scores', 'New Age'],
+    promptTip: 'Use "guzheng" or "Chinese zither" for East Asian atmosphere. Great for sweeping, dramatic moments.',
+    synth: { type: 'triangle', baseFreq: 392, envelope: { attack: 0.01, decay: 0.4, sustain: 0.2, release: 0.6 }, notes: [1, 1.125, 1.25, 1.5, 1.75, 2, 1.5, 1] }
+  },
+  {
+    name: 'Bouzouki',
+    category: 'World / Folk',
+    icon: '🪕',
+    description: 'Long-necked lute central to Greek music. Also widely adopted in Irish folk. Bright, metallic, and rhythmically driving.',
+    soundCharacter: 'Bright, metallic, ringing. Steel strings create a sharp, trebly shimmer. Tremolo picking is a signature technique.',
+    howItSounds: 'A bright, jangling cascade of metallic notes — like a mandolin\'s sharper, more intense cousin. Rings with Mediterranean sunshine.',
+    genres: ['Rebetiko', 'Greek Folk', 'Irish Folk', 'Mediterranean', 'World Fusion'],
+    promptTip: 'Use "bouzouki" for Greek/Mediterranean feel. "Irish bouzouki" for Celtic arrangements.',
+    synth: { type: 'triangle', baseFreq: 370, envelope: { attack: 0.005, decay: 0.15, sustain: 0.2, release: 0.3 }, detune: 2, notes: [1, 1.25, 1.5, 1.25, 1, 0.89, 1, 1.25] }
+  },
+  {
+    name: 'Hang Drum / Handpan',
+    category: 'World / Folk',
+    icon: '🛸',
+    description: 'Steel UFO-shaped instrument played with hands. Produces ethereal, bell-like, meditative tones. Invented in 2000 in Switzerland.',
+    soundCharacter: 'Ethereal, bell-like, warm, and resonant. Each note blooms with rich overtones. Deeply calming and meditative.',
+    howItSounds: 'Like a steel drum married a singing bowl — warm, resonant notes that bloom and hover in the air. Deeply peaceful and otherworldly.',
+    genres: ['Ambient', 'Meditation', 'World Fusion', 'Busking', 'New Age', 'Yoga Music'],
+    promptTip: 'Use "handpan" or "hang drum" for ethereal, meditative atmosphere. Perfect for calm, spiritual moods.',
+    synth: { type: 'sine', baseFreq: 294, envelope: { attack: 0.01, decay: 0.6, sustain: 0.25, release: 0.8 }, notes: [1, 1.2, 1.33, 1.5, 1.33, 1.2, 1, 0.89] }
+  },
+  {
+    name: 'Shamisen',
+    category: 'World / Folk',
+    icon: '🎵',
+    description: 'Japanese three-stringed lute with a percussive, sharp tone. Used in kabuki theater, folk music, and modern rock fusion.',
+    soundCharacter: 'Sharp, percussive, twangy attack with a raw, buzzing resonance. Aggressive and rhythmic — surprisingly punk.',
+    howItSounds: 'A sharp, snapping twang — each note hits hard with a buzzy slap, like an aggressive banjo with attitude. Raw and exciting.',
+    genres: ['Japanese Traditional', 'Kabuki', 'Tsugaru-jamisen', 'J-Rock Fusion', 'World'],
+    promptTip: 'Use "shamisen" for Japanese traditional or modern fusion. "Tsugaru-jamisen" for aggressive, fast style.',
+    synth: { type: 'sawtooth', baseFreq: 330, envelope: { attack: 0.005, decay: 0.15, sustain: 0.15, release: 0.2 }, filterFreq: 2500, notes: [1, 1.33, 1, 1.5, 1.33, 1, 0.75, 1] }
+  },
+  {
+    name: 'Pan Flute',
+    category: 'World / Folk',
+    icon: '🪈',
+    description: 'Ancient wind instrument made of graduated tubes. Found in Andean, Romanian, and Chinese traditions. Pure, breathy tone.',
+    soundCharacter: 'Breathy, pure, airy, with a natural wind-like quality. Each note has a soft, gentle attack with an ethereal sustain.',
+    howItSounds: 'Like the wind itself learned to sing — pure, breathy notes that float and hover. Evokes mountain tops and misty valleys.',
+    genres: ['Andean', 'Romanian Folk', 'New Age', 'World Music', 'Meditation'],
+    promptTip: 'Use "pan flute" for Andean/mountainous atmosphere. "Zampoña" for South American specificity.',
+    synth: { type: 'sine', baseFreq: 523, envelope: { attack: 0.06, decay: 0.05, sustain: 0.7, release: 0.3 }, notes: [1, 1.125, 1.25, 1.33, 1.25, 1, 0.89, 1] }
+  },
 ];
 
 // Play an instrument demo using Web Audio API
 export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => void } {
-  console.log('[InstrumentDemo] Starting demo for:', instrument.name);
-  
   let ctx: AudioContext;
   try {
     ctx = new AudioContext();
-    console.log('[InstrumentDemo] AudioContext state:', ctx.state, 'sampleRate:', ctx.sampleRate);
   } catch (e) {
     console.error('[InstrumentDemo] Failed to create AudioContext:', e);
     return { stop: () => {} };
   }
 
-  // Resume must be awaited but we handle it gracefully
-  const resumePromise = ctx.state === 'suspended' ? ctx.resume() : Promise.resolve();
-  resumePromise.then(() => {
-    console.log('[InstrumentDemo] AudioContext resumed, state:', ctx.state);
-  }).catch(e => {
-    console.error('[InstrumentDemo] Failed to resume:', e);
-  });
+  if (ctx.state === 'suspended') {
+    ctx.resume().catch(() => {});
+  }
 
   const { synth } = instrument;
   const notes = synth.notes || [1];
   const noteTime = 0.35;
   const totalTime = notes.length * noteTime;
-
-  console.log('[InstrumentDemo] Notes:', notes.length, 'totalTime:', totalTime, 'synth type:', synth.type, 'baseFreq:', synth.baseFreq);
 
   try {
     const gainNode = ctx.createGain();
@@ -472,7 +743,7 @@ export function playInstrumentDemo(instrument: InstrumentInfo): { stop: () => vo
       oscillators.push(osc);
     });
 
-    console.log('[InstrumentDemo] All oscillators scheduled successfully');
+    
 
     let stopped = false;
     const stop = () => {
