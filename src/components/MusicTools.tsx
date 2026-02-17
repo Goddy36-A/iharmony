@@ -63,6 +63,8 @@ const TOOLS: { category: string; icon: React.ReactNode; items: ToolEntry[] }[] =
       { name: 'TuneCore', description: 'Music distribution and publishing administration — keep 100% of your royalties.', url: 'https://www.tunecore.com', category: 'distribution' },
       { name: 'SoundCloud', description: 'Upload and share your music — discover artists and build a following.', url: 'https://soundcloud.com', category: 'distribution', free: true },
       { name: 'Bandcamp', description: 'Sell your music directly to fans — artist-friendly platform with fair revenue split.', url: 'https://bandcamp.com', category: 'distribution', free: true },
+      { name: 'Mdundo', description: 'Africa-focused music platform — huge in East Africa. Great for reaching Ugandan, Kenyan, and Tanzanian listeners.', url: 'https://mdundo.com', category: 'distribution', free: true },
+      { name: 'Audiomack', description: 'Free music streaming and distribution — popular with hip-hop, Afrobeats, and emerging artists worldwide.', url: 'https://audiomack.com', category: 'distribution', free: true },
     ],
   },
   {
