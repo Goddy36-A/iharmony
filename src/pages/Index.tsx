@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { Music, Piano, Layers, BookOpen, Headphones, GraduationCap, Globe, Guitar } from 'lucide-react';
+import { Music, Piano, Layers, BookOpen, Headphones, GraduationCap, Globe, Guitar, Wrench, User } from 'lucide-react';
 import ScaleExplorer from '@/components/ScaleExplorer';
 import ChordProgressions from '@/components/ChordProgressions';
 import SongStructures from '@/components/SongStructures';
 import GenreGuide from '@/components/GenreGuide';
 import ProductionGlossary from '@/components/ProductionGlossary';
 import InstrumentGuide from '@/components/InstrumentGuide';
+import MusicTools from '@/components/MusicTools';
+import AboutMe from '@/components/AboutMe';
 
 const tabs = [
   { id: 'glossary', label: 'Dictionary', icon: GraduationCap, description: 'Producer dictionary & prompt tips' },
@@ -14,6 +16,8 @@ const tabs = [
   { id: 'scales', label: 'Scales', icon: Piano, description: 'Music theory reference' },
   { id: 'chords', label: 'Chords', icon: Headphones, description: 'Chord progressions' },
   { id: 'structure', label: 'Structure', icon: Layers, description: 'Song arrangements' },
+  { id: 'tools', label: 'Tools', icon: Wrench, description: 'Software & sites for producers' },
+  { id: 'about', label: 'About', icon: User, description: 'About the creator' },
 ];
 
 const Index = () => {
@@ -63,6 +67,8 @@ const Index = () => {
         {activeTab === 'chords' && <ChordProgressions />}
         {activeTab === 'structure' && <SongStructures />}
         {activeTab === 'genres' && <GenreGuide />}
+        {activeTab === 'tools' && <MusicTools />}
+        {activeTab === 'about' && <AboutMe />}
       </main>
     </div>
   );
