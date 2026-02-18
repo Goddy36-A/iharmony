@@ -6,35 +6,35 @@
 
 @layer base {
   :root {
-    --background: 220 20% 7%;
-    --foreground: 210 20% 92%;
+    --background: 225 18% 9%;
+    --foreground: 210 15% 88%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 20% 92%;
+    --card: 224 16% 12%;
+    --card-foreground: 210 15% 88%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 210 20% 92%;
+    --popover: 224 16% 12%;
+    --popover-foreground: 210 15% 88%;
 
-    --primary: 174 72% 52%;
-    --primary-foreground: 220 20% 7%;
+    --primary: 174 62% 48%;
+    --primary-foreground: 225 18% 9%;
 
-    --secondary: 220 16% 16%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 222 14% 17%;
+    --secondary-foreground: 210 15% 78%;
 
-    --muted: 220 14% 14%;
-    --muted-foreground: 215 12% 50%;
+    --muted: 222 12% 15%;
+    --muted-foreground: 215 10% 48%;
 
-    --accent: 326 78% 60%;
-    --accent-foreground: 220 20% 7%;
+    --accent: 326 65% 58%;
+    --accent-foreground: 225 18% 9%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 14% 18%;
-    --input: 220 14% 18%;
-    --ring: 174 72% 52%;
+    --border: 222 12% 20%;
+    --input: 222 12% 20%;
+    --ring: 174 62% 48%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
 
     --sidebar-background: 220 18% 10%;
     --sidebar-foreground: 210 20% 92%;
@@ -81,21 +81,21 @@
 
 @layer utilities {
   .glow-primary {
-    box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3),
-                0 0 40px hsl(var(--glow-primary) / 0.1);
+    box-shadow: 0 0 16px hsl(var(--glow-primary) / 0.2),
+                0 0 32px hsl(var(--glow-primary) / 0.06);
   }
 
   .glow-accent {
-    box-shadow: 0 0 20px hsl(var(--glow-accent) / 0.3),
-                0 0 40px hsl(var(--glow-accent) / 0.1);
+    box-shadow: 0 0 16px hsl(var(--glow-accent) / 0.2),
+                0 0 32px hsl(var(--glow-accent) / 0.06);
   }
 
   .text-glow {
-    text-shadow: 0 0 20px hsl(var(--glow-primary) / 0.5);
+    text-shadow: 0 0 16px hsl(var(--glow-primary) / 0.35);
   }
 
   .glass {
-    @apply bg-card/60 backdrop-blur-xl border border-border/50;
+    @apply bg-card/70 backdrop-blur-xl border border-border/40 shadow-lg shadow-black/10;
   }
 
   .piano-key-white {
