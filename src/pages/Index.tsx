@@ -26,31 +26,31 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b border-border/50 glass sticky top-0 z-50">
-        <div className="container max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
-          <div className="p-2 rounded-lg bg-primary/10 glow-primary">
+      <header className="border-b border-border/30 glass sticky top-0 z-50">
+        <div className="container max-w-6xl mx-auto px-4 sm:px-6 py-5 flex items-center gap-3">
+          <div className="p-2.5 rounded-xl bg-primary/10 glow-primary">
             <Music className="w-6 h-6 text-primary" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground text-glow">SoundTheory</h1>
-            <p className="text-xs text-muted-foreground font-mono">AI Producer Curriculum — Zero to Hero</p>
+            <h1 className="text-xl font-bold text-foreground text-glow tracking-tight">SoundTheory</h1>
+            <p className="text-xs text-muted-foreground font-mono tracking-wide">AI Producer Curriculum — Zero to Hero</p>
           </div>
         </div>
       </header>
 
-      <main className="container max-w-6xl mx-auto px-4 py-6">
+      <main className="container max-w-6xl mx-auto px-4 sm:px-6 py-8">
         {/* Tab navigation */}
-        <nav className="flex gap-2 mb-8 overflow-x-auto pb-2">
+        <nav className="flex gap-2.5 mb-10 overflow-x-auto pb-2 scrollbar-none">
           {tabs.map(tab => {
             const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
+                className={`flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-medium transition-all duration-200 whitespace-nowrap ${
                   activeTab === tab.id
-                    ? 'bg-primary text-primary-foreground glow-primary'
-                    : 'bg-card text-muted-foreground hover:text-foreground hover:bg-secondary'
+                    ? 'bg-primary text-primary-foreground glow-primary shadow-md'
+                    : 'bg-card/80 text-muted-foreground hover:text-foreground hover:bg-secondary/80 border border-border/30'
                 }`}
               >
                 <Icon className="w-4 h-4" />
