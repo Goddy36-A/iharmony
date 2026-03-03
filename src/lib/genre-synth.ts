@@ -611,6 +611,138 @@ const GENRE_PATTERNS: Record<string, BeatPattern> = {
       { step: 0, freq: 65, dur: 0.8 }, { step: 6, freq: 73, dur: 0.6 }, { step: 12, freq: 55, dur: 0.8 },
     ],
   },
+  'Kidandali': {
+    bpm: 120, bars: 2,
+    steps: [
+      [{ hit: 'kick' }], [{ hit: 'shaker' }], [{ hit: 'hihat' }], [{ hit: 'shaker' }],
+      [{ hit: 'snare' }, { hit: 'conga' }], [{ hit: 'shaker' }], [{ hit: 'hihat' }], [{ hit: 'shaker' }],
+      [{ hit: 'kick' }], [{ hit: 'shaker' }], [{ hit: 'kick' }, { hit: 'hihat' }], [{ hit: 'shaker' }],
+      [{ hit: 'snare' }, { hit: 'conga' }], [{ hit: 'shaker' }], [{ hit: 'hihat' }], [{ hit: 'shaker' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 65 }, { step: 4, freq: 82 }, { step: 8, freq: 73 }, { step: 10, freq: 82 },
+    ],
+  },
+  'Kadongo Kamu': {
+    bpm: 90, bars: 2,
+    steps: [
+      [{ hit: 'kick' }], null, [{ hit: 'rim' }], null,
+      null, null, [{ hit: 'rim' }], null,
+      [{ hit: 'kick' }], null, null, [{ hit: 'rim' }],
+      null, null, [{ hit: 'rim' }], null,
+    ],
+    bassPattern: [
+      { step: 0, freq: 65, dur: 0.6 }, { step: 8, freq: 73, dur: 0.6 },
+    ],
+  },
+  'Gengetone': {
+    bpm: 110, bars: 2,
+    steps: [
+      [{ hit: 'kick' }], [{ hit: 'hihat' }], [{ hit: 'hihat' }], [{ hit: 'kick' }],
+      [{ hit: 'snare' }, { hit: 'clap' }], [{ hit: 'hihat' }], [{ hit: 'hihat' }], [{ hit: 'hihat' }],
+      [{ hit: 'kick' }], [{ hit: 'hihat' }], [{ hit: 'kick' }], [{ hit: 'hihat' }],
+      [{ hit: 'snare' }, { hit: 'clap' }], [{ hit: 'hihat' }], [{ hit: 'hihat' }], [{ hit: 'hihat' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 45, dur: 0.5 }, { step: 3, freq: 50, dur: 0.3 }, { step: 8, freq: 45, dur: 0.5 },
+    ],
+  },
+  'Singeli': {
+    bpm: 220, bars: 2,
+    steps: [
+      [{ hit: 'kick' }], [{ hit: 'hihat' }], [{ hit: 'kick' }], [{ hit: 'hihat' }],
+      [{ hit: 'snare' }], [{ hit: 'hihat' }], [{ hit: 'kick' }], [{ hit: 'hihat' }],
+      [{ hit: 'kick' }], [{ hit: 'hihat' }], [{ hit: 'snare' }], [{ hit: 'hihat' }],
+      [{ hit: 'kick' }], [{ hit: 'hihat' }], [{ hit: 'kick' }], [{ hit: 'hihat' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 50, dur: 0.15 }, { step: 4, freq: 55, dur: 0.15 }, { step: 8, freq: 50, dur: 0.15 }, { step: 12, freq: 45, dur: 0.15 },
+    ],
+  },
+  'Taarab': {
+    bpm: 85, bars: 2,
+    steps: [
+      [{ hit: 'tom' }], null, [{ hit: 'shaker' }], null,
+      [{ hit: 'rim' }], null, [{ hit: 'shaker' }], null,
+      [{ hit: 'tom' }], null, [{ hit: 'shaker' }], null,
+      [{ hit: 'rim' }], null, [{ hit: 'shaker' }], null,
+    ],
+    bassPattern: [
+      { step: 0, freq: 55, dur: 0.8 }, { step: 4, freq: 62, dur: 0.6 }, { step: 8, freq: 49, dur: 0.8 }, { step: 12, freq: 55, dur: 0.6 },
+    ],
+  },
+  'Benga': {
+    bpm: 115, bars: 2,
+    steps: [
+      [{ hit: 'kick' }], [{ hit: 'shaker' }], [{ hit: 'hihat' }], [{ hit: 'shaker' }],
+      [{ hit: 'snare' }], [{ hit: 'shaker' }], [{ hit: 'hihat' }], [{ hit: 'kick' }, { hit: 'shaker' }],
+      [{ hit: 'kick' }], [{ hit: 'shaker' }], [{ hit: 'hihat' }], [{ hit: 'shaker' }],
+      [{ hit: 'snare' }], [{ hit: 'shaker' }], [{ hit: 'kick' }], [{ hit: 'shaker' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 65 }, { step: 4, freq: 73 }, { step: 7, freq: 82 }, { step: 10, freq: 73 }, { step: 14, freq: 65 },
+    ],
+  },
+  'Zilizopendwa': {
+    bpm: 105, bars: 2,
+    steps: [
+      [{ hit: 'kick' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+      [{ hit: 'snare' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+      [{ hit: 'kick' }], [{ hit: 'shaker' }], [{ hit: 'kick' }], [{ hit: 'shaker' }],
+      [{ hit: 'snare' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 65 }, { step: 4, freq: 73 }, { step: 8, freq: 82 }, { step: 12, freq: 73 },
+    ],
+  },
+  'Mbalax': {
+    bpm: 130, bars: 2,
+    steps: [
+      [{ hit: 'conga' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'rim' }],
+      [{ hit: 'conga' }, { hit: 'clap' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+      [{ hit: 'conga' }], [{ hit: 'rim' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+      [{ hit: 'conga' }, { hit: 'clap' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'rim' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 55 }, { step: 4, freq: 65 }, { step: 8, freq: 73 }, { step: 12, freq: 65 },
+    ],
+  },
+  'Chimurenga': {
+    bpm: 110, bars: 2,
+    steps: [
+      [{ hit: 'shaker' }], [{ hit: 'shaker' }], [{ hit: 'rim' }], [{ hit: 'shaker' }],
+      [{ hit: 'shaker' }], [{ hit: 'rim' }], [{ hit: 'shaker' }], [{ hit: 'shaker' }],
+      [{ hit: 'rim' }], [{ hit: 'shaker' }], [{ hit: 'shaker' }], [{ hit: 'rim' }],
+      [{ hit: 'shaker' }], [{ hit: 'shaker' }], [{ hit: 'rim' }], [{ hit: 'shaker' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 65, dur: 0.4 }, { step: 4, freq: 73, dur: 0.4 }, { step: 8, freq: 82, dur: 0.4 }, { step: 12, freq: 73, dur: 0.4 },
+    ],
+  },
+  'Maskandi': {
+    bpm: 115, bars: 2,
+    steps: [
+      [{ hit: 'kick' }], null, [{ hit: 'rim' }], null,
+      [{ hit: 'kick' }, { hit: 'clap' }], null, [{ hit: 'rim' }], null,
+      [{ hit: 'kick' }], null, [{ hit: 'rim' }], [{ hit: 'kick' }],
+      [{ hit: 'clap' }], null, [{ hit: 'rim' }], null,
+    ],
+    bassPattern: [
+      { step: 0, freq: 55, dur: 0.5 }, { step: 4, freq: 65, dur: 0.4 }, { step: 8, freq: 55, dur: 0.5 },
+    ],
+  },
+  'Jùjú Music': {
+    bpm: 115, bars: 2,
+    steps: [
+      [{ hit: 'conga' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+      [{ hit: 'conga' }, { hit: 'tom' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+      [{ hit: 'conga' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+      [{ hit: 'conga' }, { hit: 'tom' }], [{ hit: 'shaker' }], [{ hit: 'conga' }], [{ hit: 'shaker' }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 65 }, { step: 4, freq: 73 }, { step: 8, freq: 82 }, { step: 12, freq: 73 },
+    ],
+  },
 };
 
 // Fallback pattern for genres not explicitly defined
