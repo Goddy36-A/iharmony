@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GLOSSARY, LEVEL_COLORS, type GlossaryCategory } from '@/lib/glossary-data';
 import { Search, Sparkles, ChevronDown, ChevronRight } from 'lucide-react';
+import CopyableText from './CopyableText';
 
 const ProductionGlossary = () => {
   const [search, setSearch] = useState('');
@@ -123,9 +124,12 @@ const ProductionGlossary = () => {
                   </div>
 
                   {term.promptTip && (
-                    <div className="flex items-start gap-2 pl-0 mt-2 p-2.5 rounded-lg bg-primary/5 border border-primary/10">
-                      <Sparkles className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-                      <p className="text-xs text-primary/90 font-mono leading-relaxed">{term.promptTip}</p>
+                    <div className="pl-0 mt-2 p-2.5 rounded-lg bg-primary/5 border border-primary/10">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        <Sparkles className="w-3.5 h-3.5 text-primary" />
+                        <span className="text-xs font-semibold text-primary uppercase tracking-wider">AI Prompt Tip</span>
+                      </div>
+                      <CopyableText text={term.promptTip} />
                     </div>
                   )}
                 </div>

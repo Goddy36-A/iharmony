@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from 'react';
 import { INSTRUMENTS, INSTRUMENT_CATEGORIES, playInstrumentDemo, type InstrumentInfo } from '@/lib/instruments-data';
 import { Search, Play, Square, Volume2, Sparkles, Filter } from 'lucide-react';
+import CopyableText from './CopyableText';
 
 import stringsImg from '@/assets/instruments/strings.jpg';
 import keysImg from '@/assets/instruments/keys.jpg';
@@ -190,7 +191,7 @@ const InstrumentGuide = () => {
                       <Sparkles className="w-3.5 h-3.5 text-primary" />
                       <span className="text-xs font-semibold text-primary uppercase tracking-wider">AI Prompt Tip</span>
                     </div>
-                    <p className="text-xs text-primary/80 font-mono">{inst.promptTip}</p>
+                    <CopyableText text={inst.promptTip} />
                   </div>
 
                   {/* Play Demo */}
