@@ -122,7 +122,7 @@ const InstrumentGuide = () => {
       {Object.entries(grouped).map(([category, instruments]) => (
         <div key={category} className="space-y-4">
           {/* Category banner */}
-          <div className="relative rounded-xl overflow-hidden h-36">
+          <div className="relative rounded-xl overflow-hidden h-24 sm:h-36">
             <img
               src={CATEGORY_IMAGES[category]}
               alt={category}
@@ -139,7 +139,7 @@ const InstrumentGuide = () => {
           </div>
 
           {/* Instrument cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             {instruments.map(inst => {
               const isPlaying = playingInstrument === inst.name;
               return (

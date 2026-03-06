@@ -67,17 +67,17 @@ const ScaleExplorer = () => {
 
       {/* Scale info */}
       <div className="glass rounded-xl p-5 space-y-4">
-        <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:justify-between gap-3 sm:gap-4">
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-foreground">{selectedRoot} {selectedScale}</h3>
-            <p className="font-mono text-primary text-sm mt-1">
+            <p className="font-mono text-primary text-xs sm:text-sm mt-1 break-all sm:break-normal">
               {scaleNoteNames.join(' — ')}
             </p>
           </div>
           <button
             onClick={handlePlayScale}
             disabled={isPlaying}
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-all shrink-0 ${
+            className={`flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-lg font-medium transition-all shrink-0 text-sm ${
               isPlaying
                 ? 'bg-primary/30 text-primary cursor-wait'
                 : 'bg-primary text-primary-foreground hover:glow-primary'

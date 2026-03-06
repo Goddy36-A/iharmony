@@ -42,15 +42,15 @@ const SongStructures = () => {
         <p className="text-sm text-muted-foreground mb-5">{structure.description}</p>
 
         {/* Visual timeline */}
-        <div className="flex gap-1 h-16 rounded-lg overflow-hidden mb-4">
+        <div className="flex gap-0.5 sm:gap-1 h-12 sm:h-16 rounded-lg overflow-hidden mb-4">
           {structure.sections.map((section, i) => (
             <div
               key={i}
-              className={`${sectionColorMap[section.color] || 'bg-muted'} border rounded flex items-center justify-center text-xs font-medium transition-all hover:brightness-125 cursor-default`}
+              className={`${sectionColorMap[section.color] || 'bg-muted'} border rounded flex items-center justify-center text-[9px] sm:text-xs font-medium transition-all hover:brightness-125 cursor-default`}
               style={{ flex: section.bars }}
               title={`${section.name} (${section.bars} bars)`}
             >
-              <span className="truncate px-1 text-foreground">{section.name}</span>
+              <span className="truncate px-0.5 sm:px-1 text-foreground">{section.name}</span>
             </div>
           ))}
         </div>
