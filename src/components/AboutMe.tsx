@@ -14,7 +14,7 @@ const AboutMe = () => {
             <p className="text-primary font-semibold text-sm font-mono mb-3">aka Kitara Kid</p>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">
               A passionate student and AI music enthusiast building tools to make music production knowledge accessible to everyone. 
-              SoundTheory is my vision of empowering the next generation of AI-powered music creators — from zero to hero.
+              iHarmony is my vision of empowering the next generation of AI-powered music creators — from zero to hero.
             </p>
           </div>
         </div>
