@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ALL_NOTES, SCALES, getScaleNotes, getScaleNoteNames, playSequence } from '@/lib/music-data';
 import PianoKeyboard from './PianoKeyboard';
 import { Play, Sparkles } from 'lucide-react';
+import CopyableText from './CopyableText';
 
 const ScaleExplorer = () => {
   const [selectedRoot, setSelectedRoot] = useState('C');
