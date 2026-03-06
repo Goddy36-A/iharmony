@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from 'react';
 import { INSTRUMENTS, INSTRUMENT_CATEGORIES, playInstrumentDemo, type InstrumentInfo } from '@/lib/instruments-data';
 import { Search, Play, Square, Volume2, Sparkles, Filter } from 'lucide-react';
+import CopyableText from './CopyableText';
 
 import stringsImg from '@/assets/instruments/strings.jpg';
 import keysImg from '@/assets/instruments/keys.jpg';
