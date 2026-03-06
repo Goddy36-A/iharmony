@@ -108,9 +108,12 @@ const ScaleExplorer = () => {
         )}
 
         {scaleInfo && 'promptTip' in scaleInfo && (
-          <div className="flex items-start gap-2 p-3 rounded-lg bg-primary/5 border border-primary/10">
-            <Sparkles className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
-            <p className="text-xs text-primary/90 font-mono">{(scaleInfo as any).promptTip}</p>
+          <div className="p-3 rounded-lg bg-primary/5 border border-primary/10">
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-primary" />
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">AI Prompt Tip</span>
+            </div>
+            <CopyableText text={(scaleInfo as any).promptTip} />
           </div>
         )}
       </div>

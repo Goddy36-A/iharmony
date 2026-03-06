@@ -191,7 +191,7 @@ const InstrumentGuide = () => {
                       <Sparkles className="w-3.5 h-3.5 text-primary" />
                       <span className="text-xs font-semibold text-primary uppercase tracking-wider">AI Prompt Tip</span>
                     </div>
-                    <p className="text-xs text-primary/80 font-mono">{inst.promptTip}</p>
+                    <CopyableText text={inst.promptTip} />
                   </div>
 
                   {/* Play Demo */}

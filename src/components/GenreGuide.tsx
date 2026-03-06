@@ -143,18 +143,7 @@ const GenreGuide = () => {
                     <span className="text-xs font-semibold text-primary uppercase tracking-wider">AI Prompt Tips</span>
                   </div>
                   {genre.promptTips.map((tip, i) => (
-                    <button
-                      key={i}
-                      onClick={() => copyTip(tip)}
-                      className="w-full flex items-center justify-between gap-2 text-left text-xs text-primary/80 font-mono p-1.5 rounded hover:bg-primary/10 transition-colors group"
-                    >
-                      <span>{tip}</span>
-                      {copiedTip === tip ? (
-                        <Check className="w-3.5 h-3.5 text-green-400 shrink-0" />
-                      ) : (
-                        <Copy className="w-3.5 h-3.5 opacity-40 group-hover:opacity-80 shrink-0 transition-opacity" />
-                      )}
-                    </button>
+                    <CopyableText key={i} text={tip} />
                   ))}
                 </div>
               )}
