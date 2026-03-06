@@ -72,7 +72,7 @@ const GenreGuide = () => {
       </div>
 
       {/* Genre cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         {filteredGenres.map(genre => {
           const isPlaying = playingGenre === genre.name;
           const demoBpm = getPatternBpm(genre.name);

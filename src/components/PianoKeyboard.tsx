@@ -40,7 +40,7 @@ const PianoKeyboard = ({ highlightedNotes = [], startOctave = 4, octaves = 2, on
   const totalWhiteKeys = whiteKeys.length;
 
   return (
-    <div className="relative select-none" style={{ height: '160px' }}>
+    <div className="relative select-none h-28 sm:h-40">
       {/* White keys */}
       <div className="flex h-full gap-[2px]">
         {whiteKeys.map((key, i) => {
