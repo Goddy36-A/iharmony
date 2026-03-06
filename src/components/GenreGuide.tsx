@@ -1,12 +1,19 @@
 import { useState, useRef, useEffect } from 'react';
 import { GENRES, type GenreInfo } from '@/lib/music-data';
 import { playGenreBeat, getPatternBpm, type GenrePlayer } from '@/lib/genre-synth';
-import { Music, Clock, Gauge, Play, Square, Sparkles, Search, Volume2 } from 'lucide-react';
+import { Music, Clock, Gauge, Play, Square, Sparkles, Search, Volume2, Copy, Check } from 'lucide-react';
 
 const GenreGuide = () => {
   const [search, setSearch] = useState('');
   const [playingGenre, setPlayingGenre] = useState<string | null>(null);
+  const [copiedTip, setCopiedTip] = useState<string | null>(null);
   const playerRef = useRef<GenrePlayer | null>(null);
+
+  const copyTip = (tip: string) => {
+    navigator.clipboard.writeText(tip);
+    setCopiedTip(tip);
+    setTimeout(() => setCopiedTip(null), 1500);
+  };
 
   // Cleanup on unmount
   useEffect(() => {
@@ -142,7 +149,18 @@ const GenreGuide = () => {
                     <span className="text-xs font-semibold text-primary uppercase tracking-wider">AI Prompt Tips</span>
                   </div>
                   {genre.promptTips.map((tip, i) => (
-                    <p key={i} className="text-xs text-primary/80 font-mono">{tip}</p>
+                    <button
+                      key={i}
+                      onClick={() => copyTip(tip)}
+                      className="w-full flex items-center justify-between gap-2 text-left text-xs text-primary/80 font-mono p-1.5 rounded hover:bg-primary/10 transition-colors group"
+                    >
+                      <span>{tip}</span>
+                      {copiedTip === tip ? (
+                        <Check className="w-3.5 h-3.5 text-green-400 shrink-0" />
+                      ) : (
+                        <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-60 shrink-0 transition-opacity" />
+                      )}
+                    </button>
                   ))}
                 </div>
               )}
