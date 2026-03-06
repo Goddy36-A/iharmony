@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { GLOSSARY, LEVEL_COLORS, type GlossaryCategory } from '@/lib/glossary-data';
 import { Search, Sparkles, ChevronDown, ChevronRight } from 'lucide-react';
+import CopyableText from './CopyableText';
 
 const ProductionGlossary = () => {
   const [search, setSearch] = useState('');
