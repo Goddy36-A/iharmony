@@ -72,7 +72,7 @@ const AboutMe = () => {
         <p className="text-sm text-muted-foreground leading-relaxed">
           As someone from Kanungu in Western Uganda, access to professional music education wasn't always easy. 
           When AI music tools like Suno and Udio emerged, I saw an incredible opportunity — but realized most people 
-          didn't know the music vocabulary needed to write great prompts. SoundTheory bridges that gap. It's a free, 
+          didn't know the music vocabulary needed to write great prompts. iHarmony bridges that gap. It's a free, 
           comprehensive curriculum that teaches you music theory, production terminology, genre knowledge, and prompt 
           engineering — everything you need to go from complete beginner to confident AI music producer.
         </p>
