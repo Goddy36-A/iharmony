@@ -67,7 +67,7 @@ const AboutMe = () => {
       <div className="glass rounded-xl p-6">
         <div className="flex items-center gap-2 mb-3">
           <Heart className="w-5 h-5 text-accent" />
-          <h3 className="font-semibold text-foreground">Why I Built SoundTheory</h3>
+          <h3 className="font-semibold text-foreground">Why I Built iHarmony</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
           As someone from Kanungu in Western Uganda, access to professional music education wasn't always easy. 
