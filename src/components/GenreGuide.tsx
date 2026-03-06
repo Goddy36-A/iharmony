@@ -158,7 +158,7 @@ const GenreGuide = () => {
                       {copiedTip === tip ? (
                         <Check className="w-3.5 h-3.5 text-green-400 shrink-0" />
                       ) : (
-                        <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-60 shrink-0 transition-opacity" />
+                        <Copy className="w-3.5 h-3.5 opacity-40 group-hover:opacity-80 shrink-0 transition-opacity" />
                       )}
                     </button>
                   ))}
