@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { GENRES, type GenreInfo } from '@/lib/music-data';
 import { playGenreBeat, getPatternBpm, type GenrePlayer } from '@/lib/genre-synth';
-import { Music, Clock, Gauge, Play, Square, Sparkles, Search, Volume2, Copy, Check } from 'lucide-react';
+import { Music, Clock, Gauge, Play, Square, Sparkles, Search, Volume2 } from 'lucide-react';
+import CopyableText from './CopyableText';
 
 const GenreGuide = () => {
   const [search, setSearch] = useState('');
