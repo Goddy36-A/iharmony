@@ -14,7 +14,7 @@ const AboutMe = () => {
             <p className="text-primary font-semibold text-sm font-mono mb-3">aka Kitara Kid</p>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xl">
               A passionate student and AI music enthusiast building tools to make music production knowledge accessible to everyone. 
-              SoundTheory is my vision of empowering the next generation of AI-powered music creators — from zero to hero.
+              iHarmony is my vision of empowering the next generation of AI-powered music creators — from zero to hero.
             </p>
           </div>
         </div>
@@ -67,12 +67,12 @@ const AboutMe = () => {
       <div className="glass rounded-xl p-6">
         <div className="flex items-center gap-2 mb-3">
           <Heart className="w-5 h-5 text-accent" />
-          <h3 className="font-semibold text-foreground">Why I Built SoundTheory</h3>
+          <h3 className="font-semibold text-foreground">Why I Built iHarmony</h3>
         </div>
         <p className="text-sm text-muted-foreground leading-relaxed">
           As someone from Kanungu in Western Uganda, access to professional music education wasn't always easy. 
           When AI music tools like Suno and Udio emerged, I saw an incredible opportunity — but realized most people 
-          didn't know the music vocabulary needed to write great prompts. SoundTheory bridges that gap. It's a free, 
+          didn't know the music vocabulary needed to write great prompts. iHarmony bridges that gap. It's a free, 
           comprehensive curriculum that teaches you music theory, production terminology, genre knowledge, and prompt 
           engineering — everything you need to go from complete beginner to confident AI music producer.
         </p>

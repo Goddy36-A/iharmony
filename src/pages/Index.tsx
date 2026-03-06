@@ -32,7 +32,7 @@ const Index = () => {
             <Music className="w-6 h-6 text-primary" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-foreground text-glow tracking-tight">SoundTheory</h1>
+            <h1 className="text-xl font-bold text-foreground text-glow tracking-tight"><h1 className="text-xl font-bold text-foreground text-glow tracking-tight">iHarmony</h1></h1>
             <p className="text-xs text-muted-foreground font-mono tracking-wide">AI Producer Curriculum — Zero to Hero</p>
           </div>
         </div>
