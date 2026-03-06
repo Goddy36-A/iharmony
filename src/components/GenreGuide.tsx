@@ -7,14 +7,7 @@ import CopyableText from './CopyableText';
 const GenreGuide = () => {
   const [search, setSearch] = useState('');
   const [playingGenre, setPlayingGenre] = useState<string | null>(null);
-  const [copiedTip, setCopiedTip] = useState<string | null>(null);
   const playerRef = useRef<GenrePlayer | null>(null);
-
-  const copyTip = (tip: string) => {
-    navigator.clipboard.writeText(tip);
-    setCopiedTip(tip);
-    setTimeout(() => setCopiedTip(null), 1500);
-  };
 
   // Cleanup on unmount
   useEffect(() => {
