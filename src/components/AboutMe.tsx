@@ -1,4 +1,4 @@
-import { MapPin, GraduationCap, Music, Heart, Sparkles } from 'lucide-react';
+import { MapPin, GraduationCap, Music, Heart, Sparkles, ExternalLink } from 'lucide-react';
 
 const AboutMe = () => {
   return (

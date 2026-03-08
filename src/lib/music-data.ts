@@ -927,4 +927,17 @@ export const GENRES: GenreInfo[] = [
     ],
     subgenres: ['Classic Jùjú', 'Afro-Jùjú', 'Gospel Jùjú'],
   },
+  // ===== ORIGINAL GENRE BY KITARA KID =====
+  {
+    name: 'Neon Griot Streetwave', bpm: '85-110', timeSignature: '4/4',
+    commonScales: ['Phrygian', 'Harmonic Minor', 'Dorian', 'Pentatonic Minor'],
+    characteristics: ['Metallic scrap percussion', 'Warm sub-bass pulses', 'Glitchy neon synths', 'Half-spoken half-sung vocals', 'Ghostly echo harmonies', 'Distant chant layers', 'Body-motion rhythm', 'Hypnotic evolving groove', 'Street-poet delivery', 'Broken hologram textures'],
+    keyArtists: ['Kitara Kid'],
+    description: 'An entirely new genre created by Kitara Kid — Neon Griot Streetwave fuses deep urban wisdom with surreal sonic textures. The sound is futuristic, street-smart, and otherworldly: metallic, scrap-like percussion clatters and shifts unpredictably over warm sub-bass pulses, while glitchy neon synths shimmer like broken holograms. Vocals are half-spoken, half-sung in a confident street-poet style, delivering cryptic lines about movement, intuition, and survival. Ghostly background echoes and distant chant harmonies create a sense of ancient knowledge inside a digital city. The rhythm follows body motion rather than conventional tempo, creating an evolving, hypnotic groove that feels alive. Not hip-hop, not amapiano, not electronic — something entirely new.',
+    promptTips: ['"Neon Griot Streetwave — metallic scrap percussion, glitchy neon synths, sub-bass"', '"Street-poet half-spoken vocals over broken hologram textures"', '"Hypnotic body-motion groove with ghostly chant echoes, Kitara Kid style"', '"Futuristic urban griot storytelling, surreal digital city atmosphere"', '"Ancient wisdom meets neon streets, evolving rhythm, genre-breaking"'],
+    sampleLinks: [
+      { label: '🎵 Kitara Kid on Mdundo', url: 'https://www.mdundo.com/artist/kitara-kid' },
+    ],
+    subgenres: ['Raw Streetwave', 'Neon Griot Acoustic', 'Digital Griot'],
+  },
 ];
