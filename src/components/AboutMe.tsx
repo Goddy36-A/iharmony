@@ -100,7 +100,16 @@ const AboutMe = () => {
             className="flex items-center gap-2 text-sm text-primary hover:underline"
           >
             <ExternalLink className="w-4 h-4" />
-            Kitara Kid on Mdundo — Listen to my tracks
+            Kitara Kid on Mdundo — All Tracks
+          </a>
+          <a
+            href="https://mdundo.com/song/5737021#"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-accent hover:underline"
+          >
+            <ExternalLink className="w-4 h-4" />
+            🎧 Listen: Featured Song on Mdundo
           </a>
           <p className="text-sm text-muted-foreground leading-relaxed">
             I also created an original genre called <span className="text-foreground font-semibold">Neon Griot Streetwave</span> — 
