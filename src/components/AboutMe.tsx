@@ -1,4 +1,4 @@
-import { MapPin, GraduationCap, Music, Heart, Sparkles } from 'lucide-react';
+import { MapPin, GraduationCap, Music, Heart, Sparkles, ExternalLink } from 'lucide-react';
 
 const AboutMe = () => {
   return (
@@ -84,6 +84,30 @@ const AboutMe = () => {
           "Music is the universal language. AI is making it possible for anyone, anywhere, to speak it fluently."
         </blockquote>
         <p className="text-xs text-muted-foreground mt-2 font-mono">— Kitara Kid</p>
+      </div>
+
+      {/* Links */}
+      <div className="glass rounded-xl p-6">
+        <div className="flex items-center gap-2 mb-3">
+          <Music className="w-5 h-5 text-primary" />
+          <h3 className="font-semibold text-foreground">My Music & Genre</h3>
+        </div>
+        <div className="space-y-3">
+          <a
+            href="https://www.mdundo.com/artist/kitara-kid"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-primary hover:underline"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Kitara Kid on Mdundo — Listen to my tracks
+          </a>
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            I also created an original genre called <span className="text-foreground font-semibold">Neon Griot Streetwave</span> — 
+            a futuristic blend of metallic scrap percussion, glitchy neon synths, street-poet vocals, and ancient chant echoes. 
+            Find it in the Genre Guide with a playable beat demo!
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -743,6 +743,18 @@ const GENRE_PATTERNS: Record<string, BeatPattern> = {
       { step: 0, freq: 65 }, { step: 4, freq: 73 }, { step: 8, freq: 82 }, { step: 12, freq: 73 },
     ],
   },
+  'Neon Griot Streetwave': {
+    bpm: 95, bars: 2,
+    steps: [
+      [{ hit: 'kick', vol: 0.7 }], null, [{ hit: 'rim', vol: 0.4 }], [{ hit: 'shaker', vol: 0.3 }],
+      null, [{ hit: 'cowbell', vol: 0.3 }, { hit: 'rim', vol: 0.5 }], [{ hit: 'shaker', vol: 0.2 }], null,
+      [{ hit: 'kick', vol: 0.6 }, { hit: 'tom', vol: 0.3 }], [{ hit: 'shaker', vol: 0.3 }], null, [{ hit: 'clap', vol: 0.5 }],
+      [{ hit: 'rim', vol: 0.4 }], null, [{ hit: 'cowbell', vol: 0.25 }, { hit: 'shaker', vol: 0.3 }], [{ hit: 'tom', vol: 0.4 }],
+    ],
+    bassPattern: [
+      { step: 0, freq: 55, dur: 0.4 }, { step: 5, freq: 62, dur: 0.3 }, { step: 8, freq: 49, dur: 0.5 }, { step: 13, freq: 58, dur: 0.3 },
+    ],
+  },
 };
 
 // Fallback pattern for genres not explicitly defined
