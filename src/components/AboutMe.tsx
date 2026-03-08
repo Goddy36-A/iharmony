@@ -94,7 +94,7 @@ const AboutMe = () => {
         </div>
         <div className="space-y-3">
           <a
-            href="https://www.mdundo.com/artist/kitara-kid"
+            href="https://mdundo.com/song/5737021"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-sm text-primary hover:underline"
